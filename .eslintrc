@@ -1,0 +1,15 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "eslint:recommended",
+        "eslint:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error",
+        "no-unused-vars": "warn",
+        "no-console": "warn"
+    }
+}
