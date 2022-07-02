@@ -2,7 +2,7 @@
   "name": "simple-ui-components",
   "version": "0.0.1",
   "description": "UI library for webpages.",
-  "main": "./src/index.js",
+  "main": "./src/index.ts",
   "repository": "https://github.com/davikiyo/simple-ui-components.git",
   "author": "davikiyo@gmail.com",
   "license": "MIT",
@@ -51,7 +51,7 @@
   "scripts": {
     "dev": "start-storybook -p 6006 --no-open",
     "build-storybook": "build-storybook",
-    "build": "tsc",
+    "build": "tsc -p ./tsconfig.prod.json",
     "test": "jest"
   }
 }
