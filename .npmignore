@@ -1,6 +1,7 @@
-stories
 src
+stories
 .storybook
+.vscode
 .*.swp
 ._*
 .DS_Store
