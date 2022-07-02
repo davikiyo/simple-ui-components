@@ -24,6 +24,7 @@ coverage
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 dist
+lib
 
 # Dependency directories
 node_modules/
@@ -49,6 +50,7 @@ jspm_packages/
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode
 
 # yarn v2
 .yarn/cache
