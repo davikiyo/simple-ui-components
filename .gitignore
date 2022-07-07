@@ -21,10 +21,11 @@ lib-cov
 coverage
 *.lcov
 
-# Compiled binary addons (https://nodejs.org/api/addons.html)
+# Artifacts
 build/Release
 dist
 lib
+storybook-static
 
 # Dependency directories
 node_modules/
