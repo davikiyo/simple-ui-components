@@ -8,6 +8,7 @@ module.exports = {
       files: '*.stories.@(js|jsx|ts|tsx)',
     },
   ],
+  staticDirs: ['./public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -19,6 +20,7 @@ module.exports = {
       resolve: {
         alias: {
           components: path.resolve(__dirname, '../src/index.ts'),
+          assets: path.resolve(__dirname, '../src/assets'),
         },
       },
     })
@@ -26,6 +28,9 @@ module.exports = {
   framework: '@storybook/react',
   core: {
     builder: '@storybook/builder-vite',
+  },
+  features: {
+    storyStoreV7: true,
   },
   typescript: {
     check: false,
