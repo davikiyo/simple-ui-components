@@ -16,22 +16,22 @@ export interface IconProps {
   className?: string
 }
 
-const IconContainer = styled.span<{ height: number; width: number }>`
+const IconContainer = styled.span<{ height: number; width: number; color: string }>`
   display: inline-flex;
   align-items: center;
-  color: inherit;
+  color: ${(props) => props.color};
   max-width: ${(props) => `${props.height}px`};
   max-height: ${(props) => `${props.width}px`};
 `
 
 /** Displays an icon with the given name */
 const Icon = React.forwardRef<HTMLSpanElement, IconProps>(function (
-  { name, height, width, className, color = 'currentColor' },
+  { name, height, width, className, color = 'inherit' },
   ref
 ) {
   return (
-    <IconContainer ref={ref} className={className} height={height} width={width}>
-      <svg width={width} height={height} fill={color}>
+    <IconContainer ref={ref} className={className} height={height} width={width} color={color}>
+      <svg width={width} height={height} fill="currentColor">
         <use href={`${svgSrc}#${name}`} />
       </svg>
     </IconContainer>
