@@ -25,9 +25,14 @@ const PaginationContainer = styled.div`
   max-height: 2.4rem;
 `
 
+const BUTTON_SIZE = 24
+
 const NavigationButton = styled.button`
   margin: 0;
   padding: 0;
+  width: ${BUTTON_SIZE / 10}rem;
+  height: ${BUTTON_SIZE / 10}rem;
+  box-sizing: border-box;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -106,7 +111,7 @@ export default function Pagination({
         onClick={onPrevClick}
         {...(currentPage == 1 && { disabled: true })}
       >
-        <Icon name="chevron-circle-left" height={24} width={24} />
+        <Icon name="chevron-circle-left" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MovePrevButton>
       {pages > 3 && currentPage > 2 && <Dots>...</Dots>}
 
@@ -118,7 +123,7 @@ export default function Pagination({
         onClick={onNextClick}
         {...(currentPage == pages && { disabled: true })}
       >
-        <Icon name="chevron-circle-right" height={24} width={24} />
+        <Icon name="chevron-circle-right" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MoveNextButton>
     </PaginationContainer>
   )
