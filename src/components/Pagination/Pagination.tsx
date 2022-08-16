@@ -1,20 +1,38 @@
-import React from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icons'
 import Paginator from './Paginator'
 
 export interface PaginationProps {
-  /** Number of total pages */
+  /**
+   * Number of total pages.
+   */
   pages: number
-  /** The current page number */
+
+  /**
+   * The current page number.
+   */
   currentPage: number
-  /** The number of max pages to display */
+
+  /**
+   * The number of max pages to display.
+   */
   maxElements?: number
-  /** Paginate to the next page */
+
+  /**
+   * Paginate to the next page.
+   */
   onNextClick: () => void
-  /** Paginate to the previous page */
+
+  /**
+   * Paginate to the previous page.
+   */
   onPrevClick: () => void
-  /** Paginate to the specified page */
+
+  /**
+   * Paginate to the specified page.
+   *
+   * @param page - A page number that has been clicked.
+   */
   onPageClick: (page: number) => void
 }
 
@@ -85,7 +103,9 @@ const PageNumber = styled.span<{ current?: boolean }>`
   transition: background-color 0.1s linear;
 `
 
-/** Gives the control to paginate between pages */
+/**
+ * gives the control to paginate between pages.
+ */
 export default function Pagination({
   pages,
   currentPage,
@@ -93,7 +113,7 @@ export default function Pagination({
   onPrevClick,
   onNextClick,
 }: PaginationProps) {
-  /** Renders the page numbers depending on the current page */
+  // Renders the page numbers depending on the current page
   const renderPageNumbers = (pages: number, currentPage: number) => {
     const pageSlice = Paginator.generateSlice(currentPage, pages, maxElements)
 

@@ -2,7 +2,7 @@ const MAX_ELEMENTS = 3
 /**
  * Paginator
  *
- * generates an array of numbers to use in the pagination
+ * generates an array of numbers to use in the pagination.
  */
 export default class Paginator {
   private currentPage: number

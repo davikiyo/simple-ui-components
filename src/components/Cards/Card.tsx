@@ -1,15 +1,26 @@
-import React from 'react'
+import { forwardRef } from 'react'
 
 import styled from 'styled-components'
 
 export interface CardProps {
-  /** Card contents */
+  /**
+   * Contents to be displayed in the card.
+   */
   children?: React.ReactNode
-  /** Appends a class to the card */
+
+  /**
+   * A class to be appended to the card.
+   */
   className?: string
-  /** Displays the shadow */
+
+  /**
+   * Displays shadow.
+   */
   shadow?: boolean
-  /** Displays the border */
+
+  /**
+   * Displays borders.
+   */
   border?: boolean
 }
 
@@ -25,11 +36,9 @@ const CardContainer = styled.div<{ shadow?: boolean; border?: boolean }>`
 `
 
 /**
- * renders the card component
- *
- * @param {GridProps} param
+ * renders the card component.
  */
-export const Card = React.forwardRef<HTMLDivElement, CardProps>(function (
+export const Card = forwardRef<HTMLDivElement, CardProps>(function (
   { children, className, shadow = false, border = true },
   ref
 ) {
@@ -39,5 +48,6 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(function (
     </CardContainer>
   )
 })
+Card.displayName = 'Card'
 
 export default Card
