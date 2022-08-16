@@ -1,16 +1,40 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "jsdoc"],
   "extends": [
     "eslint:recommended",
-    "eslint:react/recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended",
     "prettier"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "no-unused-vars": "warn",
-    "no-console": "warn"
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "jsdoc/require-param": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/require-param-name": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/require-param-description": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/require-returns": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/require-returns-type": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/require-returns-description": ["error", { "contexts": ["TSFunctionType"] }],
+    "jsdoc/multiline-blocks": 1,
+    "jsdoc/match-description": [
+      "error",
+      {
+        "mainDescription": "[A-Za-z].*\\."
+      }
+    ],
+    "jsdoc/require-hyphen-before-param-description": 2
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
   }
 }
