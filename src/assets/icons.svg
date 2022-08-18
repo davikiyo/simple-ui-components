@@ -16,4 +16,9 @@
             </g>
         </g>
     </symbol>
+
+    <symbol id="sorting-arrow-up" viewBox="0 0 6 4.789">
+        <path d="M3,0,6,4.789H0Z" fill="currentColor"/>
+    </symbol>
+
 </svg>
