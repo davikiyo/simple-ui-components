@@ -44,6 +44,7 @@
     "eslint-plugin-jsdoc": "^39.3.6",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-storybook": "^0.6.4",
+    "husky": "^8.0.0",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
     "prettier": "2.7.1",
@@ -59,5 +60,8 @@
     "build": "tsc -p ./tsconfig.prod.json",
     "test": "jest",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx",
+    "lint:write": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --fix",
+    "prettier": "prettier -c .",
+    "prettier:write": "prettier -w ."
   }
 }
