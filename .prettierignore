@@ -2,3 +2,4 @@ lib
 coverage
 storybook-static
 .storybook
+.husky
