@@ -6,7 +6,7 @@ module.exports = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
-  coveragePathIgnorePatterns: ['/node_modules/', './stories', '/.storybook/'],
+  coveragePathIgnorePatterns: ['/node_modules/', './stories', '/.storybook/', './lib'],
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'js'],
