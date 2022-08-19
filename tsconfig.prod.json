@@ -6,6 +6,7 @@
     "./stories",
     "*/__tests__/**/*",
     "src/**/*.spec.ts",
-    "src/**/*.spec.tsx"
+    "src/**/*.spec.tsx",
+    "./storybook-static"
   ]
 }
