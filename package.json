@@ -36,7 +36,8 @@
     ".": {
       "import": "./lib/index.es.js",
       "require": "./lib/index.umd.js"
-    }
+    },
+    "./lib/style.css": "./lib/style.css"
   },
   "dependencies": {
     "react": "^18.0.0",
