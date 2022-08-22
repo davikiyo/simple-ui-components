@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import { styled, ROOT_FONT_SIZE } from 'styles'
+
 import { Icon } from '../Icons'
 import Paginator from './Paginator'
 
@@ -36,72 +37,80 @@ export interface PaginationProps {
   onPageClick: (page: number) => void
 }
 
-const PaginationContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: end;
-  max-height: 2.4rem;
-`
-
 const BUTTON_SIZE = 24
 
-const NavigationButton = styled.button`
-  margin: 0;
-  padding: 0;
-  width: ${BUTTON_SIZE / 10}rem;
-  height: ${BUTTON_SIZE / 10}rem;
-  box-sizing: border-box;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: #3f51b5;
-  &:hover {
-    filter: brightness(1.5);
-  }
-  &:active {
-    filter: brightness(0.8);
-  }
-  &:disabled {
-    filter: brightness(0.8);
-    cursor: not-allowed;
-  }
-  transition: filter 0.1s linear;
-`
-const MovePrevButton = styled(NavigationButton)`
-  margin-right: 0.4rem;
-`
+const PaginationContainer = styled('div', {
+  fontFamily: '$main',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'end',
+  maxHeight: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
+})
 
-const MoveNextButton = styled(NavigationButton)`
-  margin-left: 0.4rem;
-`
+const NavigationButton = styled('button', {
+  margin: 0,
+  padding: 0,
+  width: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
+  height: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
+  boxSizing: 'border-box',
+  backgroundColor: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  color: '$indigo',
+  '&:hover': {
+    filter: 'brightness(1.5)',
+  },
+  '&:active': {
+    filter: 'brightness(0.8)',
+  },
+  '&:disabled': {
+    filter: 'brightness(0.8)',
+    cursor: 'not-allowed',
+  },
+  transition: 'filter 0.1s linear',
+})
 
-const Dots = styled.span`
-  margin: 0 0.4rem;
-  margin-bottom: 2px;
-  font-size: 1.6rem;
-  letter-spacing: 0.1em;
-`
+const MovePrevButton = styled(NavigationButton, {
+  marginRight: `${4 / ROOT_FONT_SIZE}rem`,
+})
 
-const PageNumber = styled.span<{ current?: boolean }>`
-  border-radius: 50%;
-  border: solid 1px #707070;
-  cursor: pointer;
-  margin: 0 4px;
-  width: 2.4rem;
-  height: 2.4rem;
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  ${(props) => props.current && 'background-color: #c0c0c0'};
-  &:hover {
-    background-color: #c0c0c0;
-  }
-  &:active {
-    background-color: inherit;
-  }
-  transition: background-color 0.1s linear;
-`
+const MoveNextButton = styled(NavigationButton, {
+  marginLeft: `${4 / ROOT_FONT_SIZE}rem`,
+})
+
+const Dots = styled('span', {
+  margin: '0 0.4rem',
+  marginBottom: '2px',
+  fontSize: '$md',
+  letterSpacing: '0.1em',
+})
+
+const PageNumber = styled('span', {
+  borderRadius: '50%',
+  border: 'solid 1px #707070',
+  cursor: 'pointer',
+  margin: `0 ${4 / ROOT_FONT_SIZE}rem`,
+  width: `${24 / ROOT_FONT_SIZE}rem`,
+  height: `${24 / ROOT_FONT_SIZE}rem`,
+  fontSize: `${14 / ROOT_FONT_SIZE}rem`,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&:hover': {
+    backgroundColor: '#c0c0c0',
+  },
+  '&:active': {
+    backgroundColor: 'inherit',
+  },
+  transition: 'background-color 0.1s linear',
+  variants: {
+    current: {
+      true: {
+        backgroundColor: '#c0c0c0',
+      },
+    },
+  },
+})
 
 /**
  * gives the control to paginate between pages.
@@ -129,7 +138,7 @@ export default function Pagination({
       <MovePrevButton
         aria-label="PreviousPage"
         onClick={onPrevClick}
-        {...(currentPage == 1 && { disabled: true })}
+        {...(currentPage <= 1 && { disabled: true })}
       >
         <Icon name="chevron-circle-left" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MovePrevButton>
@@ -141,7 +150,7 @@ export default function Pagination({
       <MoveNextButton
         aria-label="NextPage"
         onClick={onNextClick}
-        {...(currentPage == pages && { disabled: true })}
+        {...(currentPage >= pages && { disabled: true })}
       >
         <Icon name="chevron-circle-right" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MoveNextButton>

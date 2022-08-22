@@ -1,21 +1,21 @@
-import styled from 'styled-components'
-import { TableKeys } from '../models/table'
+import { styled } from 'styles'
 
+import { TableKeys } from '../models/table'
 import { TableProps, SortKeyType } from '../Table'
 import TableContentHorizontal from './TableContentHorizontal'
 import TableContentVertical from './TableContentVertical'
 
-export const Td = styled.td<{ padding: number }>`
-  padding: ${(props) => `${props.padding}px`};
-  border-bottom: 1px solid #707070;
-`
+export const Td = styled('td', {
+  borderBottom: '1px solid #707070',
+})
 
-export const TBody = styled.tbody`
-  font-size: 1.4rem;
-  text-align: center;
-`
+export const TBody = styled('tbody', {
+  fontSize: '$sm',
+  textAlign: 'center',
+})
 
 export interface TableContentVerticalProps extends TableProps {
+  paddings: number
   onSortClick: (title: TableKeys) => void
   sortKey: SortKeyType
 }

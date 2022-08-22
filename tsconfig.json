@@ -1,5 +1,5 @@
 {
-  "include": ["./src/**/*", "./stories/**/*"],
+  "include": ["./src/**/*", "./stories/**/*", "styles"],
   "exclude": ["./.storybook"],
   "compilerOptions": {
     /* Language and Environment */
@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "paths": {
       "components": ["src/index.ts"],
-      "assets": ["src/assets"]
+      "assets": ["src/assets"],
+      "styles": ["src/styles/index.ts"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
 
     /* Emit */

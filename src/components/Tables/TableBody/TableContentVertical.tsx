@@ -15,7 +15,12 @@ export default function TableContentVertical({
     <>
       {fields.map(({ key, title, sortable, renderCell }) => {
         const dataList = data.map((item) => (
-          <Td key={`${key}_${item.id}`} padding={paddings}>
+          <Td
+            key={`${key}_${item.id}`}
+            css={{
+              padding: paddings,
+            }}
+          >
             {renderCell ? renderCell(item) : item[key]}
           </Td>
         ))

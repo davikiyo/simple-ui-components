@@ -1,14 +1,20 @@
-import styled from 'styled-components'
+import { styled } from 'styles'
 
 export interface TableRowProps {
   children: React.ReactNode[]
   height?: number
 }
 
-const Tr = styled.tr<{ rowHeight?: number }>`
-  ${(props) => props.rowHeight && { height: `${props.rowHeight}px` }};
-`
+const Tr = styled('tr', {})
 
 export default function TableRow({ children, height }: TableRowProps) {
-  return <Tr rowHeight={height}>{children}</Tr>
+  return (
+    <Tr
+      css={{
+        height,
+      }}
+    >
+      {children}
+    </Tr>
+  )
 }

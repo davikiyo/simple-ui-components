@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import styled from 'styled-components'
+
+import { styled } from 'styles'
 
 import { TableField, TableKeys, TableData } from './models/table'
 import TableBody from './TableBody'
@@ -61,30 +62,32 @@ export interface TableProps {
   verticalHeader?: boolean
 }
 
-const Container = styled.div<{ height?: number; width?: number }>`
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  overflow: auto;
-  ${(props) => props.height && { height: `${props.height}px` }}
-  ${(props) => props.width && { width: `${props.width}px` }}
-`
+const Container = styled('div', {
+  fontFamily: '$main',
+  display: 'inline-block',
+  padding: 0,
+  margin: 0,
+  overflow: 'auto',
+})
 
-const TableContainer = styled.table`
-  border: none;
-  border-spacing: 0;
-`
+const TableContainer = styled('table', {
+  border: 'none',
+  borderSpacing: 0,
+})
 
-const TableHeadContainer = styled.thead<{ stickyHeader: boolean }>`
-  margin: 0;
-  background-color: #f0f0f0;
-  z-index: 10;
-  ${(props) =>
-    props.stickyHeader && {
-      position: 'sticky',
-      top: 0,
-    }}
-`
+const TableHeadContainer = styled('thead', {
+  margin: 0,
+  backgroundColor: '#f0f0f0',
+  zIndex: 10,
+  variants: {
+    stickyHeader: {
+      true: {
+        position: 'sticky',
+        top: 0,
+      },
+    },
+  },
+})
 
 export enum SORT_ORDER {
   ASC = 'ASC',
@@ -132,7 +135,13 @@ export default function Table({
   }
 
   return (
-    <Container height={height} width={width} {...((height || width) && { tabIndex: 0 })}>
+    <Container
+      css={{
+        height,
+        width,
+      }}
+      {...((height || width) && { tabIndex: 0 })}
+    >
       <TableContainer>
         {!verticalHeader && (
           <TableHeadContainer stickyHeader={stickyHeader}>
