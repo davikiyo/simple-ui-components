@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
-import styled from 'styled-components'
 
+import { styled, ROOT_FONT_SIZE } from 'styles'
 import svgSrc from 'assets/icons.svg'
 
 export interface IconProps {
@@ -30,13 +30,10 @@ export interface IconProps {
   className?: string
 }
 
-const IconContainer = styled.span<{ height: number; width: number; color: string }>`
-  display: inline-flex;
-  align-items: center;
-  color: ${(props) => props.color};
-  max-width: ${(props) => `${props.height}px`};
-  max-height: ${(props) => `${props.width}px`};
-`
+const IconContainer = styled('span', {
+  display: 'inline-flex',
+  alignItems: 'center',
+})
 
 /**
  * displays an icon with the given name.
@@ -46,8 +43,20 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
   ref
 ) {
   return (
-    <IconContainer ref={ref} className={className} height={height} width={width} color={color}>
-      <svg width={width} height={height} fill="currentColor">
+    <IconContainer
+      ref={ref}
+      className={className}
+      css={{
+        color,
+        maxWidth: `${width / ROOT_FONT_SIZE}rem`,
+        maxHeight: `${height / ROOT_FONT_SIZE}rem`,
+      }}
+    >
+      <svg
+        width={`${width / ROOT_FONT_SIZE}rem`}
+        height={`${height / ROOT_FONT_SIZE}rem`}
+        fill="currentColor"
+      >
         <use href={`${svgSrc}#${name}`} />
       </svg>
     </IconContainer>

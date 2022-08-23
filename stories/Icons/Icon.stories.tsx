@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+
 import { Icon, IconProps } from 'components'
 
 export default {

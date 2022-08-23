@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import { styled } from 'styles'
 
 import { SORT_ORDER } from './Table'
 import { Icon } from '../Icons'
 
 export interface TableHeadProps {
   children: string
-  paddings?: number
+  paddings: number
   onSortClick?: (key: string) => void
   stickyHeader?: boolean
   sortOrder?: SORT_ORDER
@@ -13,43 +13,51 @@ export interface TableHeadProps {
   verticalHeader?: boolean
 }
 
-const Th = styled.th<{ padding?: number; vertical: boolean; stickyHeader: boolean }>`
-  font-size: 1.6rem;
-  padding: ${(props) => `${props.padding || 16}px`};
-  border: none;
-  background-color: #f0f0f0;
-  border-bottom: 1px solid #707070;
-  text-align: ${(props) => (props.vertical ? 'left' : 'center')};
-  ${(props) =>
-    props.stickyHeader && {
-      position: 'sticky',
-      left: 0,
-    }}
-`
+const Th = styled('th', {
+  fontSize: '$md',
+  border: 'none',
+  backgroundColor: '#f0f0f0',
+  borderBottom: '1px solid #707070',
+  textAlign: 'center',
+  variants: {
+    vertical: {
+      true: {
+        textAlign: 'left',
+      },
+    },
+    stickyHeader: {
+      true: {
+        position: 'sticky',
+        left: 0,
+      },
+    },
+  },
+})
 
-const ThButton = styled.button`
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  border: none;
-  cursor: pointer;
-  font-weight: inherit;
-  font-size: inherit;
-`
+const ThButton = styled('button', {
+  fontFamily: '$main',
+  margin: 0,
+  padding: 0,
+  display: 'flex',
+  alignItems: 'center',
+  border: 'none',
+  cursor: 'pointer',
+  fontWeight: 'inherit',
+  fontSize: 'inherit',
+})
 
-const IconContainer = styled.span`
-  margin-left: 6px;
-  display: inline-flex;
-  flex-direction: column;
+const IconContainer = styled('span', {
+  marginLeft: '6px',
+  display: 'inline-flex',
+  flexDirection: 'column',
 
-  & > * {
-    margin-bottom: 1px;
-    &:last-child {
-      transform: rotate(180deg);
-    }
-  }
-`
+  '& > *': {
+    marginBottom: '2px',
+    '&:last-child': {
+      transform: 'rotate(180deg)',
+    },
+  },
+})
 
 export default function TableHead({
   children,
@@ -61,7 +69,13 @@ export default function TableHead({
   verticalHeader = false,
 }: TableHeadProps) {
   return sortable ? (
-    <Th padding={paddings} vertical={verticalHeader} stickyHeader={stickyHeader}>
+    <Th
+      css={{
+        padding: paddings,
+      }}
+      vertical={verticalHeader}
+      stickyHeader={stickyHeader}
+    >
       <ThButton onClick={() => onSortClick && onSortClick(children)}>
         {children}
         <IconContainer>
@@ -81,7 +95,13 @@ export default function TableHead({
       </ThButton>
     </Th>
   ) : (
-    <Th padding={paddings} vertical={verticalHeader} stickyHeader={stickyHeader}>
+    <Th
+      css={{
+        padding: paddings,
+      }}
+      vertical={verticalHeader}
+      stickyHeader={stickyHeader}
+    >
       {children}
     </Th>
   )
