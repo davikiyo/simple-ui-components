@@ -10,6 +10,11 @@ import { sortObjects } from '../../utils/utility'
 
 export interface TableProps {
   /**
+   * Defines a class for table's container.
+   */
+  className?: string
+
+  /**
    * The table data. Matches the key in the fields.
    * If no key is found in the `fields`, the value will be ignored.
    */
@@ -98,6 +103,7 @@ export type SortKeyType = { key: TableKeys; order: SORT_ORDER }
 
 /** displays the given data in a styled table. */
 export default function Table({
+  className,
   data,
   fields,
   rowHeight,
@@ -136,6 +142,7 @@ export default function Table({
 
   return (
     <Container
+      className={className}
       css={{
         height,
         width,
