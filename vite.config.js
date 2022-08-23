@@ -18,13 +18,13 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'styled-components', 'classnames'],
+      external: ['react', 'react-dom', 'classnames', '@stitches/react'],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'styled-components': 'styled',
           classnames: 'cx',
+          '@stitches/react': 'stitches',
         },
       },
     },
@@ -33,6 +33,7 @@ export default defineConfig({
   resolve: {
     alias: {
       assets: resolve(__dirname, 'src/assets'),
+      styles: resolve(__dirname, 'src/styles/index.ts'),
     },
   },
 })

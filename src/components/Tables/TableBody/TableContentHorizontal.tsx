@@ -7,7 +7,12 @@ export default function TableContentHorizontal({ data, fields, rowHeight, paddin
     <>
       {data.map((item) => {
         const dataList = fields.map(({ key, renderCell }) => (
-          <Td key={`${key}_${item.id}`} padding={paddings}>
+          <Td
+            key={`${key}_${item.id}`}
+            css={{
+              padding: paddings,
+            }}
+          >
             {renderCell ? renderCell(item) : item[key]}
           </Td>
         ))
