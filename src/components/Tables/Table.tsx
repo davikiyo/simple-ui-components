@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+// import { CSS } from '@stitches/react'
 
-import { styled } from 'styles'
+import { styled, CSS } from 'styles'
 
 import { TableField, TableKeys, TableData } from './models/table'
 import TableBody from './TableBody'
@@ -9,6 +10,16 @@ import TableRow from './TableRow'
 import { sortObjects } from '../../utils/utility'
 
 export interface TableProps {
+  /**
+   * Overrides the style in the table container.
+   */
+  css?: CSS
+
+  /**
+   * Overrides the style in the table container.
+   */
+  tableCss?: CSS
+
   /**
    * Defines a class for table's container.
    */
@@ -49,12 +60,12 @@ export interface TableProps {
   /**
    * Defines the width of the table.
    */
-  width?: number
+  width?: number | string
 
   /**
    * Defines the height of the table.
    */
-  height?: number
+  height?: number | string
 
   /**
    * Display the header in a sticky manner.
@@ -104,6 +115,8 @@ export type SortKeyType = { key: TableKeys; order: SORT_ORDER }
 /** displays the given data in a styled table. */
 export default function Table({
   className,
+  css,
+  tableCss,
   data,
   fields,
   rowHeight,
@@ -114,12 +127,20 @@ export default function Table({
   stickyHeader = false,
   verticalHeader = false,
 }: TableProps) {
-  const [tableData, setTableData] = useState(data)
-
   const [sortKey, setSortKey] = useState<SortKeyType>({
     key: '',
     order: SORT_ORDER.ASC,
   })
+
+  const tableData = useMemo(() => {
+    if (!onSortRequest) {
+      const sortedData = [...data]
+      sortObjects(sortedData, sortKey.key, sortKey.order)
+      return sortedData
+    }
+
+    return data
+  }, [data, sortKey])
 
   useEffect(() => {
     if (sortKey.key) onSortRequest && onSortRequest(sortKey)
@@ -128,14 +149,9 @@ export default function Table({
   const onSortHandler = (title: TableKeys) => {
     const key = fields.find((field) => field.key === title || field.title === title)?.key
     if (key) {
-      const sortedData = [...tableData]
       const currentOrder =
         key === sortKey.key && sortKey.order === SORT_ORDER.ASC ? SORT_ORDER.DESC : SORT_ORDER.ASC
 
-      if (!onSortRequest) {
-        sortObjects(sortedData, key, currentOrder)
-        setTableData(sortedData)
-      }
       setSortKey({ key, order: currentOrder })
     }
   }
@@ -144,12 +160,13 @@ export default function Table({
     <Container
       className={className}
       css={{
+        ...css,
         height,
         width,
       }}
       {...((height || width) && { tabIndex: 0 })}
     >
-      <TableContainer>
+      <TableContainer css={{ width, height, ...tableCss }}>
         {!verticalHeader && (
           <TableHeadContainer stickyHeader={stickyHeader}>
             <TableRow height={rowHeight}>
@@ -173,7 +190,7 @@ export default function Table({
           </TableHeadContainer>
         )}
         <TableBody
-          data={tableData}
+          data={onSortRequest ? data : tableData}
           fields={fields}
           rowHeight={rowHeight}
           paddings={paddings}

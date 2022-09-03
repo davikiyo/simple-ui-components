@@ -1,8 +1,13 @@
 import { forwardRef } from 'react'
 
-import { styled } from 'styles'
+import { styled, CSS } from 'styles'
 
 export interface CardProps {
+  /**
+   * Overrides the style in the card.
+   */
+  css?: CSS
+
   /**
    * Contents to be displayed in the card.
    */
@@ -70,11 +75,12 @@ const CardContainer = styled('div', {
  * renders the card component.
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function (
-  { children, className, shadow = false, border = true, padding = 'sm' },
+  { css, children, className, shadow = false, border = true, padding = 'sm' },
   ref
 ) {
   return (
     <CardContainer
+      css={css}
       className={className}
       ref={ref}
       shadow={shadow}

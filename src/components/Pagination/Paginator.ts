@@ -18,8 +18,7 @@ export default class Paginator {
   }
 
   /**
-   * Constructs and generate a slice of pages. Currently this
-   * method can only return 3 elements of page numbers.
+   * Constructs and generate a slice of pages.
    *
    * @param currentPage - The current page number
    * @param pages - The total page number
@@ -47,5 +46,17 @@ export default class Paginator {
     }
 
     return Array.from({ length: paginate.maxElements }, (_, i) => i + startNumber)
+  }
+
+  /**
+   * Paginates the elements in a given array.
+   *
+   * @param array - The array to be paginated
+   * @param pageSize - The total number of elements in per page
+   * @param pageNumber - The current page number
+   * @returns - A slice of elements in the given page number
+   */
+  public static paginate(array: any[], pageSize: number, pageNumber: number) {
+    return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
   }
 }

@@ -55,10 +55,12 @@ const NavigationButton = styled('button', {
   boxSizing: 'border-box',
   backgroundColor: 'transparent',
   border: 'none',
-  cursor: 'pointer',
   color: '$indigo',
-  '&:hover': {
-    filter: 'brightness(1.5)',
+  '@bp3': {
+    cursor: 'pointer',
+    '&:hover': {
+      filter: 'brightness(1.5)',
+    },
   },
   '&:active': {
     filter: 'brightness(0.8)',
@@ -88,7 +90,6 @@ const Dots = styled('span', {
 const PageNumber = styled('span', {
   borderRadius: '50%',
   border: 'solid 1px #707070',
-  cursor: 'pointer',
   margin: `0 ${4 / ROOT_FONT_SIZE}rem`,
   width: `${24 / ROOT_FONT_SIZE}rem`,
   height: `${24 / ROOT_FONT_SIZE}rem`,
@@ -96,17 +97,23 @@ const PageNumber = styled('span', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  '&:hover': {
-    backgroundColor: '#c0c0c0',
+  '@bp3': {
+    cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: '#c0c0c0',
+    },
   },
   '&:active': {
-    backgroundColor: 'inherit',
+    backgroundColor: '#f0f0f0',
   },
   transition: 'background-color 0.1s linear',
   variants: {
     current: {
       true: {
         backgroundColor: '#c0c0c0',
+        '&:active': {
+          backgroundColor: '#c0c0c0',
+        },
       },
     },
   },
@@ -121,13 +128,21 @@ export default function Pagination({
   maxElements = 3,
   onPrevClick,
   onNextClick,
+  onPageClick,
 }: PaginationProps) {
+  const onClickHandler = (num: number) => {
+    if (num !== currentPage) onPageClick(num)
+  }
   // Renders the page numbers depending on the current page
   const renderPageNumbers = (pages: number, currentPage: number) => {
     const pageSlice = Paginator.generateSlice(currentPage, pages, maxElements)
 
     return pageSlice.map((num) => (
-      <PageNumber key={num} {...(num == currentPage && { current: true })}>
+      <PageNumber
+        key={num}
+        onClick={() => onClickHandler(num)}
+        {...(num == currentPage && { current: true })}
+      >
         {num}
       </PageNumber>
     ))
