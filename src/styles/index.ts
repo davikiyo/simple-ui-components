@@ -4,6 +4,8 @@ export { default as globalStyles } from './globalStyles'
 
 export const ROOT_FONT_SIZE = 16
 
+export * from '@stitches/react'
+
 export const { styled, css } = createStitches({
   theme: {
     fontSizes: {
@@ -32,5 +34,10 @@ export const { styled, css } = createStitches({
       4: `${32 / ROOT_FONT_SIZE}rem`,
       5: `${40 / ROOT_FONT_SIZE}rem`,
     },
+  },
+  media: {
+    bp1: '(min-width: 640px)',
+    bp2: '(min-width: 768px)',
+    bp3: '(min-width: 1024px)',
   },
 })

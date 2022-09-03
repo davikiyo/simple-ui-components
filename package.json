@@ -77,7 +77,7 @@
     "build-storybook": "build-storybook",
     "build": "yarn typecheck && vite build",
     "test": "jest",
-    "typecheck": "tsc --noEmit -p ./tsconfig.prod.json",
+    "typecheck": "tsc -p ./tsconfig.prod.json",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx",
     "lint:write": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --fix",
     "prettier": "prettier -c .",

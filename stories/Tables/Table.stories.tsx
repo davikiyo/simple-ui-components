@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { Table, TableProps, TableField, TableData } from 'components'
+import { Table, TableProps, TableField, TableData, Card, Pagination } from 'components'
+import { useState } from 'react'
+import { Paginator } from 'components'
 
 export default {
   title: 'Table',
@@ -222,4 +224,102 @@ SortableWithHandler.args = {
   onSortRequest: (sortKey) => {
     console.log(sortKey)
   },
+}
+
+const data = Array.from({ length: 100 }, (_, i) => ({
+  id: i + 1,
+  name: `Stock ${i + 1}`,
+  code: `STOCK${i + 1}`,
+  price: '999.99',
+  pe: (i + 1) / 10,
+  isFavorite: false,
+}))
+
+const IntegratedTemplate: ComponentStory<typeof Table> = (args: TableProps) => {
+  const MAX_PAGE_SIZE = 25
+  const [pageNumber, setPageNumber] = useState(1)
+  const [tableData, setTableData] = useState(data.slice(0, MAX_PAGE_SIZE))
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+      }}
+    >
+      <Card
+        css={{
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          paddingLeft: 0,
+          paddingRight: 0,
+          width: '100%',
+          height: '100%',
+          maxWidth: '768px',
+        }}
+        border={false}
+        shadow
+      >
+        <Table stickyHeader css={{ maxHeight: '387px' }} width="100%" {...args} data={tableData} />
+        <div
+          style={{
+            display: 'flex',
+            marginTop: '16px',
+            marginBottom: '16px',
+            justifyContent: 'center',
+          }}
+        >
+          <Pagination
+            pages={Math.ceil(data.length / MAX_PAGE_SIZE)}
+            currentPage={pageNumber}
+            onNextClick={() => {
+              const newPageNum = pageNumber + 1
+              setTableData(Paginator.paginate(data, MAX_PAGE_SIZE, newPageNum))
+              setPageNumber(newPageNum)
+            }}
+            onPrevClick={() => {
+              const newPageNum = pageNumber - 1
+              setTableData(Paginator.paginate(data, MAX_PAGE_SIZE, newPageNum))
+              setPageNumber(newPageNum)
+            }}
+            onPageClick={(page) => {
+              setTableData(Paginator.paginate(data, MAX_PAGE_SIZE, page))
+              setPageNumber(page)
+            }}
+          />
+        </div>
+      </Card>
+    </div>
+  )
+}
+
+export const Integrated = IntegratedTemplate.bind({})
+Integrated.args = {
+  fields: [
+    {
+      key: 'name',
+      title: 'Name',
+      sortable: true,
+    },
+    {
+      key: 'code',
+      title: 'Code',
+      sortable: true,
+    },
+    {
+      key: 'price',
+      title: 'Price',
+      sortable: true,
+    },
+    {
+      key: 'pe',
+      title: 'P/E',
+      sortable: true,
+    },
+    {
+      key: 'isFavorite',
+      title: 'Favorite',
+      sortable: true,
+    },
+  ],
 }

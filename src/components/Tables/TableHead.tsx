@@ -18,17 +18,18 @@ const Th = styled('th', {
   border: 'none',
   backgroundColor: '#f0f0f0',
   borderBottom: '1px solid #707070',
-  textAlign: 'center',
+
   variants: {
     vertical: {
       true: {
         textAlign: 'left',
+        left: 0,
       },
     },
     stickyHeader: {
       true: {
         position: 'sticky',
-        left: 0,
+        top: 0,
       },
     },
   },
@@ -36,10 +37,20 @@ const Th = styled('th', {
 
 const ThButton = styled('button', {
   fontFamily: '$main',
+  color: '#000',
+  backgroundColor: 'transparent',
   margin: 0,
   padding: 0,
   display: 'flex',
-  alignItems: 'center',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  variants: {
+    vertical: {
+      true: {
+        marginLeft: 0,
+      },
+    },
+  },
   border: 'none',
   cursor: 'pointer',
   fontWeight: 'inherit',
@@ -76,7 +87,7 @@ export default function TableHead({
       vertical={verticalHeader}
       stickyHeader={stickyHeader}
     >
-      <ThButton onClick={() => onSortClick && onSortClick(children)}>
+      <ThButton vertical={verticalHeader} onClick={() => onSortClick && onSortClick(children)}>
         {children}
         <IconContainer>
           <Icon
