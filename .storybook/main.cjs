@@ -1,27 +1,27 @@
-const { mergeConfig } = require('vite')
+const { mergeConfig, loadConfigFromFile } = require('vite')
 const path = require('path')
+
+/** @type {import('@storybook/builder-vite').StorybookViteConfig} */
 module.exports = {
   stories: [
     {
-      directory: '../stories/**/',
-      titlePrefix: 'Components',
-      files: '*.stories.@(js|jsx|ts|tsx)',
-    },
+      directory: '../stories',
+      titlePrefix: 'components',
+      files: '**/*.stories.@(jsx|tsx)'
+    }
   ],
-  staticDirs: ['./public'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     '@storybook/addon-a11y',
   ],
-  async viteFinal(config, _options) {
+  async viteFinal(config) {
+    const { config: viteConfig } = await loadConfigFromFile(path.resolve(__dirname, '../vite.config.js'))
     return mergeConfig(config, {
       resolve: {
         alias: {
-          components: path.resolve(__dirname, '../src/index.ts'),
-          assets: path.resolve(__dirname, '../src/assets'),
-          styles: path.resolve(__dirname, '../src/styles/index.ts')
+          ...viteConfig.resolve.alias,
         },
       },
     })
@@ -35,11 +35,6 @@ module.exports = {
   },
   typescript: {
     check: false,
-    checkOptions: {},
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-    },
+    reactDocgen: 'react-docgen',
   },
 }
