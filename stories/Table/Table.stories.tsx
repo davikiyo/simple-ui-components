@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { Paginator } from 'components'
 
 export default {
-  title: 'Table',
   component: Table,
   args: {
     onSortRequest: undefined,
@@ -236,7 +235,7 @@ const data = Array.from({ length: 100 }, (_, i) => ({
 }))
 
 const IntegratedTemplate: ComponentStory<typeof Table> = (args: TableProps) => {
-  const MAX_PAGE_SIZE = 25
+  const MAX_PAGE_SIZE = 20
   const [pageNumber, setPageNumber] = useState(1)
   const [tableData, setTableData] = useState(data.slice(0, MAX_PAGE_SIZE))
 

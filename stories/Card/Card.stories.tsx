@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Card, CardProps } from 'components'
 
 export default {
-  title: 'Card',
   component: Card,
   excludeStories: ['cardContent'],
 } as ComponentMeta<typeof Card>

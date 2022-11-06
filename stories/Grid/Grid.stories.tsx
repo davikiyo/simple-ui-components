@@ -1,10 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { Card, Grid, GridProps } from 'components'
-import * as CardStories from '../Cards/Card.stories'
+import * as CardStories from '../Card/Card.stories'
 
 export default {
-  title: 'Grid',
   component: Grid,
 } as ComponentMeta<typeof Grid>
 

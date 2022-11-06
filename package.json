@@ -21,9 +21,7 @@
   ],
   "peerDependencies": {
     "react": "^16.8.0 || 17.x || 18.x",
-    "react-dom": "^16.8.0 || 17.x || 18.x",
-    "classnames": "^2.3.1",
-    "@stitches/react": "^1.2.8"
+    "react-dom": "^16.8.0 || 17.x || 18.x"
   },
   "type": "module",
   "files": [
@@ -39,19 +37,19 @@
     }
   },
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "18.0.0",
     "classnames": "^2.3.1",
     "@stitches/react": "^1.2.8"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.5.10",
-    "@storybook/addon-actions": "^6.5.10",
-    "@storybook/addon-essentials": "^6.5.10",
-    "@storybook/addon-interactions": "^6.5.10",
-    "@storybook/addon-links": "^6.5.10",
-    "@storybook/builder-vite": "^0.2.2",
-    "@storybook/react": "^6.5.10",
+    "react": "^18.0.0",
+    "react-dom": "18.0.0",
+    "@storybook/addon-a11y": "^6.5.13",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/builder-vite": "^0.2.5",
+    "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "^0.0.13",
     "@types/jest": "^28.1.4",
     "@types/styled-components": "^5.1.25",
@@ -62,7 +60,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jsdoc": "^39.3.6",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-storybook": "^0.6.4",
+    "eslint-plugin-storybook": "^0.6.7",
     "husky": "^8.0.0",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",

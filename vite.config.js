@@ -32,6 +32,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      components: resolve(__dirname, 'src/index.ts'),
       assets: resolve(__dirname, 'src/assets'),
       styles: resolve(__dirname, 'src/styles/index.ts'),
     },
