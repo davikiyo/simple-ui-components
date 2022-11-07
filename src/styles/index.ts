@@ -17,11 +17,13 @@ export const { styled, css } = createStitches({
     },
     colors: {
       lightGray: '#f0f0f0',
+      lightGraySecondary: '#c0c0c0',
       darkGray: '#707070',
       indigo: '#3f51b5',
       red: '#f44336',
       green: '#4caf50',
       purple: '#9c27b0',
+      secondary: '#03a9f4',
     },
     fonts: {
       main: 'Arial, Helvetica, sans-serif',
