@@ -5,19 +5,22 @@
 /** @type {import('jest').Config} */
 module.exports = {
   clearMocks: true,
-  collectCoverage: true,
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['/node_modules/', './stories', '/.storybook/', './lib'],
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  moduleFileExtensions: ['ts', 'js'],
+  moduleFileExtensions: ['ts', 'js', 'tsx', 'jsx'],
   transform: {
     '^.+\\.ts$': 'ts-jest',
   },
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
+    '!<rootDir>/src/**/index.ts',
+    '!<rootDir>/src/**/*.d.ts',
+  ],
   globals: {
     'ts-jest': {
       tsconfig: 'tsconfig.json',
     },
-    testMatch: ['src/**/*.spec.ts'],
   },
 }
