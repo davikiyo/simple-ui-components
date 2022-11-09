@@ -1,6 +1,6 @@
 {
-  "name": "simple-ui-components",
-  "version": "0.0.1",
+  "name": "@davikiyo/simple-ui-components",
+  "version": "0.0.1.rc-0",
   "description": "UI library for webpages.",
   "repository": {
     "type": "git",
@@ -75,6 +75,7 @@
     "build-storybook": "build-storybook",
     "build": "yarn typecheck && vite build",
     "test": "jest",
+    "test:coverage": "jest --coverage",
     "typecheck": "tsc -p ./tsconfig.prod.json",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx",
     "lint:write": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --fix",
