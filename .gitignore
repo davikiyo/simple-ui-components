@@ -26,6 +26,7 @@ build/Release
 dist
 lib
 storybook-static
+davikiyo-simple-ui-components-*.tgz
 
 # Dependency directories
 node_modules/
