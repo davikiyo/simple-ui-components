@@ -63,7 +63,7 @@ jobs:
           command: |
             yarn pack
             mkdir -p ~/workspace/artifacts
-            cp -r *.tgz package.json ~/workspace/artifacts
+            cp -r *.tgz ~/workspace/artifacts
 
       - persist_to_workspace:
           root: ~/workspace
@@ -80,14 +80,20 @@ jobs:
           name: Generating .npmrc
           command: |
             cd ~/workspace/artifacts
+
+            # Unzipping the tarball
+            tar zxvf *.tgz
+            cd ./package
             ls -la
+
+            # Generating .npmrc
             echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
 
       - run:
           name: Publishing package
           command: |
-            cd ~/workspace/artifacts
-            [[ $CIRCLE_BRANCH == "release/"* ]] && 
+            cd ~/workspace/artifacts/package
+            [[ $CIRCLE_BRANCH == "release" ]] && 
               TAG=latest ||
               TAG=next
             echo "Publishing with '${TAG}' tag"

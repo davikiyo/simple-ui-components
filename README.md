@@ -3,8 +3,8 @@
 # Simple UI Components Library
 
 [![npm latest package](https://img.shields.io/npm/v/@davikiyo/simple-ui-components/latest.svg)](https://www.npmjs.com/package/@davikiyo/simple-ui-components)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/davikiyo/simple-ui-components/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/davikiyo/simple-ui-components/tree/main)
-[![codecov](https://codecov.io/gh/davikiyo/simple-ui-components/branch/main/graph/badge.svg?token=23DTIW3RQM)](https://codecov.io/gh/davikiyo/simple-ui-components)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/davikiyo/simple-ui-components/tree/release.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/davikiyo/simple-ui-components/tree/release)
+[![codecov](https://codecov.io/gh/davikiyo/simple-ui-components/branch/release/graph/badge.svg?token=23DTIW3RQM)](https://codecov.io/gh/davikiyo/simple-ui-components)
 
 <h2>React components library 🚀 for webpages.</h2>
 
