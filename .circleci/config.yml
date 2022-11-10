@@ -120,3 +120,8 @@ workflows:
       - publish:
           requires:
             - hold
+          filters:
+            branches:
+              only:
+                - release
+                - develop
