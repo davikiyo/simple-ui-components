@@ -110,12 +110,13 @@ workflows:
 
       - build:
           requires:
-            - test
+            - setup
 
       - hold:
           type: approval
           requires:
             - build
+            - test
 
       - publish:
           requires:
