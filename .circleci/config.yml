@@ -120,7 +120,7 @@ workflows:
           filters:
             branches:
               only:
-                - release/v*
+                - /^release\/v.*/
                 - develop
 
       - publish:
@@ -129,5 +129,5 @@ workflows:
           filters:
             branches:
               only:
-                - release/v*
+                - /^release\/v.*/
                 - develop
