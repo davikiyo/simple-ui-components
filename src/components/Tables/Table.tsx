@@ -2,12 +2,12 @@ import { useEffect, useMemo, useState } from 'react'
 // import { CSS } from '@stitches/react'
 
 import { styled, CSS } from 'styles'
+import { sortObjects } from 'utils/utility'
 
 import { TableField, TableKeys, TableData } from './models/table'
 import TableBody from './TableBody'
 import TableHead from './TableHead'
 import TableRow from './TableRow'
-import { sortObjects } from '../../utils/utility'
 
 export interface TableProps {
   /**

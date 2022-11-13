@@ -75,7 +75,7 @@ const CardContainer = styled('div', {
  * renders the card component.
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function (
-  { css, children, className, shadow = false, border = true, padding = 'sm' },
+  { css, children, className, shadow = false, border = true, padding = 'sm' }: CardProps,
   ref
 ) {
   return (

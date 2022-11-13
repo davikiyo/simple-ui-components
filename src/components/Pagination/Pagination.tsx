@@ -1,6 +1,6 @@
 import { styled, ROOT_FONT_SIZE } from 'styles'
 
-import { Icon } from '../Icons'
+import { Icon } from 'components'
 import Paginator from './Paginator'
 
 export interface PaginationProps {
