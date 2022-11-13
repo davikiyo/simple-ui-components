@@ -93,7 +93,7 @@ jobs:
           name: Publishing package
           command: |
             cd ~/workspace/artifacts/package
-            [[ $CIRCLE_BRANCH == "release" ]] && 
+            [[ $CIRCLE_BRANCH == "release/v"* ]] && 
               TAG=latest ||
               TAG=next
             echo "Publishing with '${TAG}' tag"
@@ -120,7 +120,7 @@ workflows:
           filters:
             branches:
               only:
-                - release
+                - release/v*
                 - develop
 
       - publish:
@@ -129,5 +129,5 @@ workflows:
           filters:
             branches:
               only:
-                - release
+                - release/v*
                 - develop
