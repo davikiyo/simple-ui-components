@@ -11,16 +11,26 @@ module.exports = {
   testEnvironment: 'jsdom',
   moduleFileExtensions: ['ts', 'js', 'tsx', 'jsx'],
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.[jt]sx?$': [
+      'ts-jest',
+      {
+        tsconfig: 'tsconfig.json',
+      },
+    ],
+    '\\.svg$': 'jest-transformer-svg',
+  },
+  setupFilesAfterEnv: ['<rootDir>/test/setupTest.ts'],
+  moduleNameMapper: {
+    '^components$': '<rootDir>/src/index.ts',
+    '^styles$': '<rootDir>/src/styles/index.ts',
+    '^assets/(.*)': '<rootDir>/src/assets/$1',
+    '^utils/(.*)': '<rootDir>/src/utils/$1',
+    '^types/(.*)': '<rootDir>/src/types/$1',
   },
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/index.ts',
     '!<rootDir>/src/**/*.d.ts',
+    '!<rootDir>/src/types/**/*',
   ],
-  globals: {
-    'ts-jest': {
-      tsconfig: 'tsconfig.json',
-    },
-  },
 }

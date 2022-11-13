@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { styled } from 'styles'
 import { Icon } from '../../Icons'
@@ -87,12 +87,11 @@ export default function Checkbox({
   const [isChecked, setChecked] = useState(checked)
   const [transitionStyle, setTransitionStyle] = useState({ opacity: 1, transition: 'opacity .1s' })
 
-  useEffect(() => {
-    onChange && onChange(isChecked)
-  }, [isChecked])
-
   const handleOnClick = () => {
-    if (!disabled) handleTransition()
+    if (disabled) return
+
+    onChange && onChange(!isChecked)
+    handleTransition()
   }
 
   const handleTransition = () => {
@@ -119,7 +118,7 @@ export default function Checkbox({
       disabled={disabled}
     >
       {isChecked ? iconChecked : icon}
-      <StyledInput type="checkbox" name={name} checked={isChecked} disabled={disabled} />
+      <StyledInput type="checkbox" name={name} defaultChecked={isChecked} disabled={disabled} />
     </CheckboxContainer>
   )
 }

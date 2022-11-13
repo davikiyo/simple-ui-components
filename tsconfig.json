@@ -1,18 +1,21 @@
 {
-  "include": ["./src/**/*", "./stories/**/*", "styles"],
+  "include": ["./src/**/*", "./stories/**/*"],
   "exclude": ["./.storybook"],
   "compilerOptions": {
     /* Language and Environment */
     "target": "ESNext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */ /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
     "jsx": "react-jsx" /* Specify what JSX code is generated. */,
+    "allowJs": true,
     /* Modules */
     "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
       "components": ["src/index.ts"],
-      "assets": ["src/assets"],
-      "styles": ["src/styles/index.ts"]
+      "styles": ["src/styles/index.ts"],
+      "assets/*": ["src/assets/*"],
+      "utils/*": ["src/utils/*"],
+      "types/*": ["src/types/*"]
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
 
     /* Emit */

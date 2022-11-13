@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table component should render a table with vertical headers 1`] = `
+<DocumentFragment>
+  <div
+    class="c-hMuChS c-hMuChS-iPJLV-css"
+  >
+    <table
+      class="c-fQrKGu c-fQrKGu-iPJLV-css"
+    >
+      <tbody
+        class="c-kXHQtC"
+      >
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <th
+            class="c-dikTaN c-dikTaN-fJIFXR-vertical-true c-dikTaN-ikYLxwh-css"
+          >
+            Title
+          </th>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Title1
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Title2
+          </td>
+        </tr>
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <th
+            class="c-dikTaN c-dikTaN-fJIFXR-vertical-true c-dikTaN-ikYLxwh-css"
+          >
+            Author
+          </th>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Author1
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Author2
+          </td>
+        </tr>
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <th
+            class="c-dikTaN c-dikTaN-fJIFXR-vertical-true c-dikTaN-ikYLxwh-css"
+          >
+            Price
+          </th>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            10
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            9
+          </td>
+        </tr>
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <th
+            class="c-dikTaN c-dikTaN-fJIFXR-vertical-true c-dikTaN-ikYLxwh-css"
+          >
+            Publisher
+          </th>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Publisher1
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Publisher2
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Table component should sort the field when a handler is not provided 1`] = `
+<DocumentFragment>
+  <div
+    class="c-hMuChS c-hMuChS-iPJLV-css"
+  >
+    <table
+      class="c-fQrKGu c-fQrKGu-iPJLV-css"
+    >
+      <thead
+        class="c-eMJcLW"
+      >
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <th
+            class="c-dikTaN c-dikTaN-ikYLxwh-css"
+          >
+            <button
+              class="c-cJnOXH"
+            >
+              Title
+              <span
+                class="c-ksAOGm"
+              >
+                <span
+                  class="c-khZXrc c-khZXrc-ihpPlsv-css"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="0.375rem"
+                    width="0.5rem"
+                  >
+                    <use
+                      href="function SvgIcons(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgIcons.name})
+  );
+}#sorting-arrow-up"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="c-khZXrc c-khZXrc-ikxCbHN-css"
+                >
+                  <svg
+                    fill="currentColor"
+                    height="0.375rem"
+                    width="0.5rem"
+                  >
+                    <use
+                      href="function SvgIcons(props) {
+  return React.createElement(
+    'svg', 
+    Object.assign({}, props, {'data-file-name': SvgIcons.name})
+  );
+}#sorting-arrow-up"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          </th>
+          <th
+            class="c-dikTaN c-dikTaN-ikYLxwh-css"
+          >
+            Author
+          </th>
+          <th
+            class="c-dikTaN c-dikTaN-ikYLxwh-css"
+          >
+            Price
+          </th>
+          <th
+            class="c-dikTaN c-dikTaN-ikYLxwh-css"
+          >
+            Publisher
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="c-kXHQtC"
+      >
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Title2
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Author2
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            9
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Publisher2
+          </td>
+        </tr>
+        <tr
+          class="c-PJLV c-PJLV-iPJLV-css"
+        >
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Title1
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Author1
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            10
+          </td>
+          <td
+            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+          >
+            Publisher1
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</DocumentFragment>
+`;
