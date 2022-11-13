@@ -24,10 +24,13 @@ module.exports = {
     '^components$': '<rootDir>/src/index.ts',
     '^styles$': '<rootDir>/src/styles/index.ts',
     '^assets/(.*)': '<rootDir>/src/assets/$1',
+    '^utils/(.*)': '<rootDir>/src/utils/$1',
+    '^types/(.*)': '<rootDir>/src/types/$1',
   },
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/index.ts',
     '!<rootDir>/src/**/*.d.ts',
+    '!<rootDir>/src/types/**/*',
   ],
 }

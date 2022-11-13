@@ -2,22 +2,23 @@ import { forwardRef } from 'react'
 
 import { styled, ROOT_FONT_SIZE } from 'styles'
 import svgSrc from 'assets/icons.svg'
+import { IconName } from 'types/Icon'
 
 export interface IconProps {
   /**
    * Specifies a name of the icon.
    */
-  name: string
+  name: IconName
 
   /**
    * Specifies the height of the icon.
    */
-  height: number
+  height?: number
 
   /**
    * Specifies the width of the icon.
    */
-  width: number
+  width?: number
 
   /**
    * Specifies a color of the icon.
@@ -39,7 +40,7 @@ const IconContainer = styled('span', {
  * displays an icon with the given name.
  */
 const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
-  { name, height, width, className, color = 'inherit' },
+  { name, className, color = 'inherit', height = 16, width = 16 }: IconProps,
   ref
 ) {
   return (
