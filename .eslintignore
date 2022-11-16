@@ -3,3 +3,5 @@ coverage
 .vscode
 storybook-static
 .storybook
+jest.config.cjs
+vite.config.js

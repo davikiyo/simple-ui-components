@@ -2,12 +2,10 @@
   "include": ["./src/**/*", "./stories/**/*"],
   "exclude": ["./.storybook"],
   "compilerOptions": {
-    /* Language and Environment */
-    "target": "ESNext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */ /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
-    "jsx": "react-jsx" /* Specify what JSX code is generated. */,
+    "target": "ESNext",
+    "jsx": "react-jsx",
     "allowJs": true,
-    /* Modules */
-    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
+    "baseUrl": "./",
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
@@ -16,20 +14,12 @@
       "assets/*": ["src/assets/*"],
       "utils/*": ["src/utils/*"],
       "types/*": ["src/types/*"]
-    } /* Specify a set of entries that re-map imports to additional lookup locations. */,
-
-    /* Emit */
-    "declaration": true /* Generate .d.ts files from TypeScript and JavaScript files in your project. */ /* Specify a file that bundles all outputs into one JavaScript file. If 'declaration' is true, also designates a file that bundles all .d.ts output. */,
-    "outDir": "./lib" /* Specify an output folder for all emitted files. */,
-
-    /* Interop Constraints */
-    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-
-    /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */,
-
-    /* Completeness */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    },
+    "declaration": true,
+    "outDir": "./lib",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
   }
 }
