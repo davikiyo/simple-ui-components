@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentStoryObj, ComponentMeta } from '@storybook/react'
 
-import { Icon, IconProps } from 'components'
+import { Icon } from 'components'
 import { ICON_NAMES } from 'types/Icon'
 
 export default {
@@ -13,11 +13,16 @@ export default {
   },
 } as ComponentMeta<typeof Icon>
 
-const Template: ComponentStory<typeof Icon> = (args: IconProps) => <Icon {...args} />
+export const Default: ComponentStoryObj<typeof Icon> = {
+  args: {
+    name: 'chevron-circle-left',
+  },
+}
 
-export const ChevronLeftCircle = Template.bind({})
-ChevronLeftCircle.args = {
-  width: 32,
-  height: 32,
-  name: 'chevron-circle-left',
+export const Large: ComponentStoryObj<typeof Icon> = {
+  args: {
+    ...Default.args,
+    width: 50,
+    height: 50,
+  },
 }
