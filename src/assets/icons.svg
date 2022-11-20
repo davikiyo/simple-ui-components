@@ -61,19 +61,22 @@
     </symbol>
 
     <symbol id="trash-can" viewBox="0 0 16 16">
-        <path d="M0,0H13a0,0,0,0,1,0,0V10a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V0A0,0,0,0,1,0,0Z" transform="translate(1.5 4)" />
+        <path d="M-4729-5860h-9a2,2,0,0,1-2-2v-10h13v10A2,2,0,0,1-4729-5860Zm-.5-11.271a.751.751,0,0,0-.75.75v8a.751.751,0,0,0,.75.75.751.751,0,0,0,.75-.75v-8A.751.751,0,0,0-4729.5-5871.271Zm-4,0a.751.751,0,0,0-.75.75v8a.751.751,0,0,0,.75.75.751.751,0,0,0,.75-.75v-8A.751.751,0,0,0-4733.5-5871.271Zm-4,0a.751.751,0,0,0-.75.75v8a.751.751,0,0,0,.75.75.751.751,0,0,0,.75-.75v-8A.751.751,0,0,0-4737.5-5871.271Z" transform="translate(4741.5 5876)"/>
         <rect width="16" height="2" rx="1" transform="translate(0 1)" />
-        <path d="M0,0V8" transform="translate(4 5.48)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
-        <path d="M0,0V8" transform="translate(8 5.48)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
-        <path d="M0,0V8" transform="translate(12 5.48)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
         <path d="M1,0H3A1,1,0,0,1,4,1V1A0,0,0,0,1,4,1H0A0,0,0,0,1,0,1V1A1,1,0,0,1,1,0Z" transform="translate(6)" />
     </symbol>
 
     <symbol id="close" viewBox="0 0 18.155 18.121">
         <g transform="translate(1.061 1.061)">
-            <line x2="16" y2="16" fill="none" stroke="currentColor" stroke-width="3"/>
-            <path d="M15,0,0,16" transform="translate(1)" fill="none" stroke="currentColor" stroke-width="3"/>
+            <line x2="16" y2="16" fill="none" stroke="currentColor" stroke-width="3" />
+            <path d="M15,0,0,16" transform="translate(1)" fill="none" stroke="currentColor" stroke-width="3" />
         </g>
+    </symbol>
+
+    <symbol id="menu" viewBox="0 0 24 14">
+        <path d="M1,0H23a1,1,0,0,1,0,2H1A1,1,0,0,1,1,0Z" />
+        <rect width="24" height="2" rx="1" transform="translate(0 6)" />
+        <rect width="24" height="2" rx="1" transform="translate(0 12)" />
     </symbol>
 
 </svg>
