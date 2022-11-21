@@ -54,6 +54,8 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
       }}
     >
       <svg
+        role="img"
+        aria-label={name}
         width={`${width / ROOT_FONT_SIZE}rem`}
         height={`${height / ROOT_FONT_SIZE}rem`}
         fill="currentColor"

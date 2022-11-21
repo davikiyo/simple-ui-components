@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
-import { Table, TableProps, TableField, TableData, Card, Pagination } from 'components'
+import { Table, TableProps, TableField, TableData, Card, Pagination, IconButton } from 'components'
 import { useState } from 'react'
 import { Paginator } from 'components'
 
@@ -231,7 +231,7 @@ const data = Array.from({ length: 100 }, (_, i) => ({
   code: `STOCK${i + 1}`,
   price: '999.99',
   pe: (i + 1) / 10,
-  isFavorite: false,
+  isFavorite: i === 0 ? true : false,
 }))
 
 const IntegratedTemplate: ComponentStory<typeof Table> = (args: TableProps) => {
@@ -319,6 +319,12 @@ Integrated.args = {
       key: 'isFavorite',
       title: 'Favorite',
       sortable: true,
+      renderCell: ({ isFavorite }) =>
+        isFavorite ? (
+          <IconButton icon="star-filled" color="#FFC107" height={24} width={24} />
+        ) : (
+          <IconButton icon="star-outlined" color="#FFC107" height={24} width={24} />
+        ),
     },
   ],
 }
