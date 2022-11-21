@@ -24,6 +24,22 @@ npm install @davikiyo/simple-ui-components
 yarn add @davikiyo/simple-ui-components
 ```
 
+## Components
+
+The available components are as follows:
+
+- AppBar
+- Card
+- Grid
+- Icon
+- Pagination
+- Table
+- UI
+  - Button
+  - IconButton
+  - Checkbox
+  - Textbox
+
 ## Demo
 
 Available components can be checked by running Storybook.

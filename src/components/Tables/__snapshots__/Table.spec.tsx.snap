@@ -121,8 +121,10 @@ exports[`Table component should sort the field when a handler is not provided 1`
                   class="c-khZXrc c-khZXrc-ihpPlsv-css"
                 >
                   <svg
+                    aria-label="sorting-arrow-up"
                     fill="currentColor"
                     height="0.375rem"
+                    role="img"
                     width="0.5rem"
                   >
                     <use
@@ -139,8 +141,10 @@ exports[`Table component should sort the field when a handler is not provided 1`
                   class="c-khZXrc c-khZXrc-ikxCbHN-css"
                 >
                   <svg
+                    aria-label="sorting-arrow-up"
                     fill="currentColor"
                     height="0.375rem"
+                    role="img"
                     width="0.5rem"
                   >
                     <use

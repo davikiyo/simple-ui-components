@@ -57,6 +57,11 @@ export interface ButtonProps {
   css?: CSS
 
   /**
+   * Defines a class for the button.
+   */
+  className?: string
+
+  /**
    * Contents to be displayed in the button.
    */
   children?: React.ReactNode
@@ -92,6 +97,7 @@ export interface ButtonProps {
  */
 export default function Button({
   css,
+  className,
   children,
   onClick,
   outlined = false,
@@ -102,6 +108,7 @@ export default function Button({
   return (
     <StyledButton
       css={css}
+      className={className}
       type={type}
       onClick={onClick}
       outlined={outlined}

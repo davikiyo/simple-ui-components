@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 
 import { Textbox } from 'components'
@@ -36,8 +36,8 @@ export const ControlledInput: ComponentStoryObj<typeof Textbox> = {
   },
   render: (args) => {
     const [value, setValue] = useState('Controlled')
-    const handleChange = (value: string) => {
-      setValue(value)
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      setValue(e.target.value)
     }
 
     return <Textbox {...args} onChange={handleChange} value={value} />
@@ -57,5 +57,14 @@ export const WithErrorMessage: ComponentStoryObj<typeof Textbox> = {
     ...Default.args,
     label: 'Input with an error',
     error: 'You entered an incorrect value.',
+  },
+}
+
+export const Disabled: ComponentStoryObj<typeof Textbox> = {
+  args: {
+    ...Default.args,
+    label: 'Disabled Input',
+    disabled: true,
+    value: 'Disabled',
   },
 }

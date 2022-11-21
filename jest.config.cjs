@@ -1,3 +1,5 @@
+const { pathsToModuleNameMapper } = require('ts-jest')
+const { compilerOptions } = require('./tsconfig.json')
 /*
  * For a detailed explanation regarding each configuration property and type check, visit:
  * https://jestjs.io/docs/configuration
@@ -14,19 +16,13 @@ module.exports = {
     '^.+\\.[jt]sx?$': [
       'ts-jest',
       {
-        tsconfig: 'tsconfig.json',
+        tsconfig: './tsconfig.json',
       },
     ],
     '\\.svg$': 'jest-transformer-svg',
   },
   setupFilesAfterEnv: ['<rootDir>/test/setupTest.ts'],
-  moduleNameMapper: {
-    '^components$': '<rootDir>/src/index.ts',
-    '^styles$': '<rootDir>/src/styles/index.ts',
-    '^assets/(.*)': '<rootDir>/src/assets/$1',
-    '^utils/(.*)': '<rootDir>/src/utils/$1',
-    '^types/(.*)': '<rootDir>/src/types/$1',
-  },
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>' }),
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/index.ts',
