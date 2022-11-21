@@ -97,7 +97,7 @@ describe('Table component', () => {
     fields[0].sortable = true
     initialize()
 
-    await userEvent.click(screen.getByRole('button', { name: 'Title' }))
+    await userEvent.click(screen.getByRole('button', { name: /Title/ }))
     expect(onSortHandlerMock).toHaveBeenCalled()
   })
 
@@ -105,8 +105,8 @@ describe('Table component', () => {
     fields[0].sortable = true
     const { asFragment } = render(<Table data={data} fields={fields} />)
 
-    await userEvent.click(screen.getByRole('button', { name: 'Title' }))
-    await userEvent.click(screen.getByRole('button', { name: 'Title' }))
+    await userEvent.click(screen.getByRole('button', { name: /Title/ }))
+    await userEvent.click(screen.getByRole('button', { name: /Title/ }))
     expect(asFragment()).toMatchSnapshot()
   })
 
@@ -130,7 +130,7 @@ describe('Table component', () => {
     fields[0].sortable = true
     initialize()
 
-    await userEvent.click(screen.getByRole('button', { name: 'Title' }))
+    await userEvent.click(screen.getByRole('button', { name: /Title/ }))
     expect(onSortHandlerMock).toHaveBeenCalled()
   })
 
