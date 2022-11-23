@@ -1,8 +1,8 @@
-import { forwardRef } from 'react'
+import { forwardRef, HTMLProps } from 'react'
 
 import { styled, CSS } from 'styles'
 
-export interface CardProps {
+export interface CardProps extends HTMLProps<HTMLDivElement> {
   /**
    * Overrides the style in the card.
    */
@@ -75,11 +75,12 @@ const CardContainer = styled('div', {
  * renders the card component.
  */
 export const Card = forwardRef<HTMLDivElement, CardProps>(function (
-  { css, children, className, shadow = false, border = true, padding = 'sm' }: CardProps,
+  { css, children, className, shadow = false, border = true, padding = 'sm', ...props }: CardProps,
   ref
 ) {
   return (
     <CardContainer
+      {...props}
       css={css}
       className={className}
       ref={ref}
