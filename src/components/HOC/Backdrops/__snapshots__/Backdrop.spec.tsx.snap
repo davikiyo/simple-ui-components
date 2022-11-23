@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
+<DocumentFragment>
+  <div
+    class="c-jxshxr c-jxshxr-dsZDrf-color-dark c-jxshxr-fTgyiV-show-true"
+    data-testid="backdrop-dark"
+  />
+  <div>
+    TEST
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Backdrop HOC should display a text with a light backdrop 1`] = `
+<DocumentFragment>
+  <div
+    class="c-jxshxr c-jxshxr-kQAVZF-color-light c-jxshxr-fTgyiV-show-true"
+    data-testid="backdrop-light"
+  />
+  <div>
+    TEST
+  </div>
+</DocumentFragment>
+`;

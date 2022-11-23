@@ -37,6 +37,7 @@ export default defineConfig({
       assets: resolve(__dirname, 'src/assets'),
       utils: resolve(__dirname, 'src/utils'),
       types: resolve(__dirname, 'src/types'),
+      HOC: resolve(__dirname, 'src/components/HOC'),
     },
   },
 })
