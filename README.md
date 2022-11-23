@@ -30,14 +30,16 @@ The available components are as follows:
 
 - AppBar
 - Card
+- Drawer
 - Grid
 - Icon
+- Modal
 - Pagination
 - Table
 - UI
   - Button
-  - IconButton
   - Checkbox
+  - IconButton
   - Textbox
 
 ## Demo
