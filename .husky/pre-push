@@ -1,4 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn test
+if [[ "$(git rev-parse --abbrev-ref HEAD)" == "feature/"* ]]; then
+    yarn test --changedSince develop
+else
+    yarn test --changedSince main
+fi

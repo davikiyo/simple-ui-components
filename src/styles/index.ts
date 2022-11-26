@@ -1,12 +1,26 @@
-import { createStitches } from '@stitches/react'
-
-export { default as globalStyles } from './globalStyles'
+import { createStitches, PropertyValue } from '@stitches/react'
 
 export const ROOT_FONT_SIZE = 16
 
-export * from '@stitches/react'
-
 export const { styled, css } = createStitches({
+  utils: {
+    px: (value: PropertyValue<'padding'>) => ({
+      paddingLeft: value,
+      paddingRight: value,
+    }),
+    py: (value: PropertyValue<'padding'>) => ({
+      paddingTop: value,
+      paddingBottom: value,
+    }),
+    mx: (value: PropertyValue<'margin'>) => ({
+      marginLeft: value,
+      marginRight: value,
+    }),
+    my: (value: PropertyValue<'margin'>) => ({
+      marginTop: value,
+      marginBottom: value,
+    }),
+  },
   theme: {
     fontSizes: {
       xs: `${10 / ROOT_FONT_SIZE}rem`,
@@ -43,3 +57,7 @@ export const { styled, css } = createStitches({
     bp3: '(min-width: 1024px)',
   },
 })
+
+export * from '@stitches/react'
+export { default as globalStyles } from './globalStyles'
+export * from './keyframes'

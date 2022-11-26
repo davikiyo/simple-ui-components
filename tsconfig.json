@@ -13,10 +13,11 @@
       "styles": ["src/styles/index.ts"],
       "assets/*": ["src/assets/*"],
       "utils/*": ["src/utils/*"],
-      "types/*": ["src/types/*"]
+      "types/*": ["src/types/*"],
+      "HOC/*": ["src/components/HOC/*"]
     },
     "declaration": true,
-    "outDir": "./lib",
+    "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

@@ -4,12 +4,6 @@ import { Button } from 'components'
 
 export default {
   component: Button,
-  argTypes: {
-    type: {
-      control: 'radio',
-      options: ['submit', 'button', 'reset'],
-    },
-  },
 } as ComponentMeta<typeof Button>
 
 export const Default: ComponentStoryObj<typeof Button> = {
