@@ -1,0 +1,6 @@
+{
+  "*.ts*": ["yarn lint:write", "yarn prettier:write"],
+  "*.js*": ["yarn lint:write", "yarn prettier:write"],
+  "*.md*": ["yarn lint:write", "yarn prettier:write"],
+  "*.json": ["yarn lint:write", "yarn prettier:write"]
+}
