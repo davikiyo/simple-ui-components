@@ -1,6 +1,6 @@
 {
   "name": "@davikiyo/simple-ui-components",
-  "version": "0.5.0-rc.0",
+  "version": "0.5.0-rc.1",
   "description": "UI library for webpages.",
   "repository": {
     "type": "git",
@@ -69,6 +69,7 @@
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
     "jest-transformer-svg": "^2.0.0",
+    "lint-staged": "^13.0.4",
     "prettier": "2.7.1",
     "react": "^18.0.0",
     "react-dom": "18.0.0",
@@ -85,8 +86,9 @@
     "test:coverage": "jest --coverage",
     "typecheck": "tsc -p ./tsconfig.prod.json",
     "lint": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx",
-    "lint:write": "eslint . --cache --report-unused-disable-directives --ext .js,.ts,.tsx --fix",
-    "prettier": "prettier -c .",
-    "prettier:write": "prettier -w ."
+    "lint:staged": "lint-staged",
+    "lint:write": "eslint --cache --report-unused-disable-directives --ext .js,.ts,.tsx --fix",
+    "prettier": "prettier -c",
+    "prettier:write": "prettier -w"
   }
 }

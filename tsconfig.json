@@ -17,7 +17,7 @@
       "HOC/*": ["src/components/HOC/*"]
     },
     "declaration": true,
-    "outDir": "./lib",
+    "isolatedModules": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
