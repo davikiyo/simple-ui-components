@@ -3,7 +3,8 @@ import { CSS, styled } from 'styles'
 
 const UL = styled('ul', {
   listStyle: 'none',
-
+  padding: 0,
+  margin: 0,
   variants: {
     border: {
       true: {

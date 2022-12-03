@@ -59,5 +59,4 @@ export const { styled, css } = createStitches({
 })
 
 export * from '@stitches/react'
-export { default as globalStyles } from './globalStyles'
 export * from './keyframes'

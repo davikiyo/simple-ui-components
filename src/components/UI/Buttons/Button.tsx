@@ -102,7 +102,7 @@ export default function Button({
   onClick,
   outlined = false,
   rounded = false,
-  type = 'button',
+  type,
   disabled = false,
 }: ButtonProps) {
   return (

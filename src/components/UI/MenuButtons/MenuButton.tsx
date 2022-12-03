@@ -11,16 +11,14 @@ const StyledButton = styled('button', {
   textAlign: 'left',
   backgroundColor: 'transparent',
   cursor: 'pointer',
-
+  fontSize: '$md',
   '&:hover': {
     backgroundColor: '$lightGray',
   },
-
   '&:disabled, &:active, &.active': {
     color: '#000',
     backgroundColor: '$lightGraySecondary',
   },
-
   variants: {
     small: {
       true: {
