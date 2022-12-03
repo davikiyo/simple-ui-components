@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
 
 import { styled, ROOT_FONT_SIZE } from 'styles'
-import { ReactComponent as SVGSprite } from 'assets/icons.svg'
 import { IconName } from 'types/Icon'
 
 export interface IconProps {
@@ -53,7 +52,6 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
         height: `${height / ROOT_FONT_SIZE}rem`,
       }}
     >
-      <SVGSprite />
       <svg role="img" aria-label={name} height="100%" width="100%" fill="currentColor">
         <use href={`#icon-${name}`} />
       </svg>
