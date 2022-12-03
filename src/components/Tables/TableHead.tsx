@@ -42,6 +42,7 @@ const ThButton = styled('button', {
   margin: 0,
   padding: 0,
   display: 'flex',
+  alignItems: 'center',
   marginLeft: 'auto',
   marginRight: 'auto',
   variants: {
@@ -63,8 +64,9 @@ const IconContainer = styled('span', {
   flexDirection: 'column',
 
   '& > *': {
-    marginBottom: '2px',
+    marginBottom: '3px',
     '&:last-child': {
+      marginBottom: '0',
       transform: 'rotate(180deg)',
     },
   },

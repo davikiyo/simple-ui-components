@@ -18,9 +18,9 @@ const StyledButton = styled('button', {
     },
     outlined: {
       true: {
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         color: '#000',
-        border: '1px solid $secondary',
+        border: '2px solid $secondary',
         '&:disabled': {
           border: 'none',
         },
@@ -32,7 +32,7 @@ const StyledButton = styled('button', {
     transition: 'none',
   },
   '@bp3': {
-    '&:hover, &:focus': {
+    '&:hover, &:focus-visible': {
       boxShadow: '2px 4px 6px #ccc',
     },
     '&:active': {

@@ -3,3 +3,4 @@ coverage
 storybook-static
 .storybook
 .husky
+*.spec.tsx.snap

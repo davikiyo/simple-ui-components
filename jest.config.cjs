@@ -19,10 +19,12 @@ module.exports = {
         tsconfig: './tsconfig.json',
       },
     ],
-    '\\.svg$': 'jest-transformer-svg',
   },
   setupFilesAfterEnv: ['<rootDir>/test/setupTest.ts'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>' }),
+  moduleNameMapper: {
+    '\\.svg$': '<rootDir>/__mocks__/svg.js',
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>' }),
+  },
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
     '!<rootDir>/src/**/index.ts',

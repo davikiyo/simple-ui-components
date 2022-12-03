@@ -1,5 +1,6 @@
 const { mergeConfig, loadConfigFromFile } = require('vite')
 const path = require('path')
+const svgr = require('vite-plugin-svgr')
 
 /** @type {import('@storybook/builder-vite').StorybookViteConfig} */
 module.exports = {
@@ -24,6 +25,7 @@ module.exports = {
           ...viteConfig.resolve.alias,
         },
       },
+      plugins: [svgr()]
     })
   },
   framework: '@storybook/react',

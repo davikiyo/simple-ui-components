@@ -41,6 +41,11 @@ const StyledInput = styled('input', {
 
 export interface CheckboxProps {
   /**
+   * Defines a class for the checkbox.
+   */
+  className?: string
+
+  /**
    * Provides a name to the checkbox.
    */
   name?: string
@@ -54,6 +59,11 @@ export interface CheckboxProps {
    * The icon to be displayed on the checked state.
    */
   iconChecked?: React.ReactNode
+
+  /**
+   * Defines an ID for the checkbox.
+   */
+  id?: string
 
   /**
    * Handles the change.
@@ -77,10 +87,12 @@ export interface CheckboxProps {
  * displays a styled checkbox.
  */
 export default function Checkbox({
+  className,
   name = 'checkbox',
   onChange,
   icon = <Icon name="checkbox-unchecked" height={15} width={15} color="#707070" />,
   iconChecked = <Icon name="checkbox-checked" height={15} width={15} color="#3f51b5" />,
+  id,
   checked = false,
   disabled = false,
 }: CheckboxProps) {
@@ -107,6 +119,8 @@ export default function Checkbox({
 
   return (
     <CheckboxContainer
+      id={id}
+      className={className}
       css={transitionStyle}
       aria-label={name}
       role="checkbox"
