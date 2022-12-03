@@ -32,7 +32,9 @@ The available components are as follows:
 - Card
 - Drawer
 - Grid
-- Icon
+- Icons
+  - Icon
+  - IconSprite
 - Lists
   - List
   - ListItem
@@ -45,6 +47,26 @@ The available components are as follows:
   - IconButton
   - MenuButton
   - Textbox
+
+### Icons
+
+`Icon` component depends on `IconSprite` to display the icons. Add `IconSprite` at the top level of your app. (Only once)
+
+```javascript
+// index.jsx or App.jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { IconSprite } from '@davikiyo/simple-ui-components'
+import App from './App'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <IconSprite />
+    <App />
+  </React.StrictMode>
+)
+```
 
 ## Demo
 
