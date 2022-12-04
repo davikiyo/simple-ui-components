@@ -128,7 +128,7 @@ exports[`Table component should sort the field when a handler is not provided 1`
                     width="100%"
                   >
                     <use
-                      href="#icon-sorting-arrow-up"
+                      href="#simple-ui-icon-sorting-arrow-up"
                     />
                   </svg>
                 </span>
@@ -143,7 +143,7 @@ exports[`Table component should sort the field when a handler is not provided 1`
                     width="100%"
                   >
                     <use
-                      href="#icon-sorting-arrow-up"
+                      href="#simple-ui-icon-sorting-arrow-up"
                     />
                   </svg>
                 </span>
