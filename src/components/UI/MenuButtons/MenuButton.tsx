@@ -12,8 +12,11 @@ const StyledButton = styled('button', {
   backgroundColor: 'transparent',
   cursor: 'pointer',
   fontSize: '$md',
-  '&:hover': {
-    backgroundColor: '$lightGray',
+  color: '#000',
+  '@bp3': {
+    '&:hover, &:focus-visible': {
+      backgroundColor: '$lightGray',
+    },
   },
   '&:disabled, &:active, &.active': {
     color: '#000',

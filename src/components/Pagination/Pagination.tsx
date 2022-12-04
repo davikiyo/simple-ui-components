@@ -5,6 +5,11 @@ import Paginator from './Paginator'
 
 export interface PaginationProps {
   /**
+   * Defines a class for the container.
+   */
+  className?: string
+
+  /**
    * Number of total pages.
    */
   pages: number
@@ -37,7 +42,7 @@ export interface PaginationProps {
   onPageClick: (page: number) => void
 }
 
-const BUTTON_SIZE = 24
+const BUTTON_SIZE = 32
 
 const PaginationContainer = styled('div', {
   fontFamily: '$main',
@@ -73,27 +78,36 @@ const NavigationButton = styled('button', {
 })
 
 const MovePrevButton = styled(NavigationButton, {
-  marginRight: `${4 / ROOT_FONT_SIZE}rem`,
+  marginRight: `${8 / ROOT_FONT_SIZE}rem`,
 })
 
 const MoveNextButton = styled(NavigationButton, {
-  marginLeft: `${4 / ROOT_FONT_SIZE}rem`,
+  marginLeft: `${8 / ROOT_FONT_SIZE}rem`,
 })
 
 const Dots = styled('span', {
-  margin: '0 0.4rem',
+  textAlign: 'center',
+  width: '8px',
+  mx: '$2',
   marginBottom: '2px',
-  fontSize: '$md',
   letterSpacing: '0.1em',
+  variants: {
+    show: {
+      true: {
+        borderBottom: '2px dotted #000',
+      },
+    },
+  },
 })
 
 const PageNumber = styled('span', {
+  boxSizing: 'border-box',
   borderRadius: '50%',
   border: 'solid 1px #707070',
-  margin: `0 ${4 / ROOT_FONT_SIZE}rem`,
-  width: `${24 / ROOT_FONT_SIZE}rem`,
-  height: `${24 / ROOT_FONT_SIZE}rem`,
-  fontSize: `${14 / ROOT_FONT_SIZE}rem`,
+  margin: `0 $2`,
+  width: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
+  height: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
+  fontSize: `$md`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -123,6 +137,7 @@ const PageNumber = styled('span', {
  * gives the control to paginate between pages.
  */
 export default function Pagination({
+  className,
   pages,
   currentPage,
   maxElements = 3,
@@ -149,7 +164,7 @@ export default function Pagination({
   }
 
   return (
-    <PaginationContainer>
+    <PaginationContainer className={className}>
       <MovePrevButton
         aria-label="PreviousPage"
         onClick={onPrevClick}
@@ -157,11 +172,11 @@ export default function Pagination({
       >
         <Icon name="chevron-circle-left" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MovePrevButton>
-      {pages > 3 && currentPage > 2 && <Dots>...</Dots>}
+      <Dots show={Boolean(pages > 3 && currentPage > 2)} />
 
       {renderPageNumbers(pages, currentPage)}
 
-      {pages > 3 && currentPage < pages - 1 && <Dots>...</Dots>}
+      <Dots show={Boolean(pages > 3 && currentPage < pages - 1)} />
       <MoveNextButton
         aria-label="NextPage"
         onClick={onNextClick}

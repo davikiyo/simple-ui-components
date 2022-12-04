@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 import cx from 'classnames'
 
-import { styled, fadeIn, slideLeftRight, slideRightLeft } from 'styles'
+import { styled } from 'styles'
 import { Card } from 'components'
 import { withBackdrop, BackdropProps } from 'HOC/Backdrops'
 
@@ -13,15 +13,13 @@ const DrawerCard = styled(Card, {
   height: '100vh',
   borderRadius: 0,
   zIndex: 999,
-  animation: `${fadeIn} .3s, ${slideLeftRight} .3s linear`,
+  transitionProperty: 'left, visibility',
+  transitionDuration: '.3s',
+  transitionTimingFunction: 'linear',
 
   '&.hidden': {
-    transitionProperty: 'opacity visibility width',
-    transitionDelay: '.3s',
     visibility: 'hidden',
-    opacity: 0,
-    width: '0 !important',
-    animation: `${fadeIn} .3s, ${slideRightLeft} .3s linear`,
+    transitionTimingFunction: 'ease-out',
   },
 })
 
@@ -57,7 +55,7 @@ export function PureDrawer({
     <DrawerCard
       role="navigation"
       className={drawerCardClasses}
-      css={{ width }}
+      css={{ width, '&.hidden': { left: typeof width === 'string' ? `-${width}` : -width } }}
       border={false}
       padding="none"
       {...(persist && { shadow: true })}

@@ -30,13 +30,11 @@ const StyledButton = styled('button', {
   '&:active': {
     filter: 'brightness(0.8)',
     transition: 'none',
+    boxShadow: 'none',
   },
   '@bp3': {
     '&:hover, &:focus-visible': {
       boxShadow: '2px 4px 6px #ccc',
-    },
-    '&:active': {
-      boxShadow: 'none',
     },
   },
   '&:disabled': {
