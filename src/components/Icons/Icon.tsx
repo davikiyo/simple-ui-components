@@ -53,7 +53,7 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
       }}
     >
       <svg role="img" aria-label={name} height="100%" width="100%" fill="currentColor">
-        <use href={`#icon-${name}`} />
+        <use href={`#simple-ui-icon-${name}`} />
       </svg>
     </IconContainer>
   )
