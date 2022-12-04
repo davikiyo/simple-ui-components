@@ -61,7 +61,7 @@ export default {
           <Button onClick={() => setShow(true)} rounded>
             Open Modal
           </Button>
-          <p style={{ width: '375px' }}>{textData}</p>
+          <p style={{ width: '375px', padding: '0 16px', boxSizing: 'border-box' }}>{textData}</p>
         </div>
       </>
     )

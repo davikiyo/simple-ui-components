@@ -8,9 +8,11 @@ const StyledBackdrop = styled('div', {
   zIndex: 999,
   width: '100vw',
   height: '100vh',
-  visibility: 'hidden',
+  transitionProperty: 'opacity, visibility',
+  transitionDuration: '.3s',
+  transitionTimingFunction: 'linear',
   opacity: 0,
-  transition: 'visibility .3s ease-out, opacity .3s ease-in',
+  visibility: 'hidden',
 
   variants: {
     color: {
@@ -61,17 +63,30 @@ export default function withBackDrop<T extends BackdropProps = BackdropProps>(
   Component: ComponentType<T>,
   { color = 'dark', fixContent = false }: BackdropOptions = {}
 ) {
+  const resetProperties = () => {
+    document.body.style.removeProperty('overflow-y')
+    document.body.style.removeProperty('position')
+    document.body.style.removeProperty('width')
+    document.body.style.removeProperty('top')
+    document.body.style.removeProperty('left')
+  }
+
   const WrappedComponent = ({ onClose, show = false, ...props }: T) => {
     // Set overflow property
+
     useEffect(() => {
       if (fixContent && show) {
         document.body.style.overflowY = 'hidden'
+        document.body.style.position = 'fixed'
+        document.body.style.width = '100vw'
+        document.body.style.top = '0'
+        document.body.style.left = '0'
       } else {
-        document.body.style.overflowY = 'unset'
+        resetProperties()
       }
 
       return () => {
-        document.body.style.overflowY = 'unset'
+        resetProperties()
       }
     }, [show])
 

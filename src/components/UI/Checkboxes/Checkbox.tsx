@@ -21,9 +21,9 @@ const CheckboxContainer = styled('span', {
     },
   },
   '@bp3': {
-    '&:hover, &:focus': {
+    '&:hover, &:focus-visible': {
       '& svg': {
-        filter: 'drop-shadow(2px 2px 6px #ccc)',
+        filter: 'drop-shadow(2px 2px 2px #707070)',
       },
     },
   },
