@@ -22,6 +22,9 @@ const ButtonContainer = styled('button', {
     filter: 'none',
     transition: 'none',
   },
+  '&:disabled': {
+    filter: 'unset',
+  },
   variants: {
     rounded: {
       true: {
@@ -36,6 +39,10 @@ const ButtonContainer = styled('button', {
         },
         '&:active': {
           backgroundColor: 'rgba(0,0,0,0.5)',
+        },
+        '&:disabled': {
+          backgroundColor: 'unset',
+          filter: 'none',
         },
       },
     },

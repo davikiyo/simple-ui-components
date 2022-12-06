@@ -12,7 +12,7 @@ const DrawerCard = styled(Card, {
   left: 0,
   height: '100vh',
   borderRadius: 0,
-  zIndex: 999,
+  zIndex: 9999,
   transitionProperty: 'left, visibility',
   transitionDuration: '.3s',
   transitionTimingFunction: 'linear',
@@ -20,6 +20,13 @@ const DrawerCard = styled(Card, {
   '&.hidden': {
     visibility: 'hidden',
     transitionTimingFunction: 'ease-out',
+  },
+  variants: {
+    persist: {
+      true: {
+        zIndex: 999,
+      },
+    },
   },
 })
 
@@ -58,7 +65,7 @@ export function PureDrawer({
       css={{ width, '&.hidden': { left: typeof width === 'string' ? `-${width}` : -width } }}
       border={false}
       padding="none"
-      {...(persist && { shadow: true })}
+      {...(persist && { persist, shadow: true })}
     >
       {children}
     </DrawerCard>

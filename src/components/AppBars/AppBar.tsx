@@ -10,7 +10,7 @@ const StyledAppBar = styled('div', {
   padding: '$2 $3',
   display: 'flex',
   alignItems: 'center',
-  zIndex: 9999,
+  zIndex: 1000,
   variants: {
     small: {
       true: {

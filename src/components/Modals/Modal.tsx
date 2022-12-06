@@ -76,7 +76,7 @@ export function PureModal({
   children,
   show = false,
   height = '100%',
-  width = '100%',
+  width = 'calc(100% - 32px)',
   maxHeight = '70vh',
   maxWidth = '570px',
 }: ModalProps) {
