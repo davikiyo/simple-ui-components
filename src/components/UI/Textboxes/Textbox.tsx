@@ -171,7 +171,7 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   ref
 ) {
   const { disabled, name, value } = rest
-  const [isEmpty, setEmpty] = useState(!!value)
+  const [isEmpty, setEmpty] = useState(!value)
 
   // setEmpty to true if the given value is empty.
   useEffect(() => {
@@ -179,7 +179,7 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   }, [])
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmpty(!!e.target.value)
+    setEmpty(!e.target.value)
     onChange && onChange(e)
   }
 
