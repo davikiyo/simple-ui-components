@@ -1,13 +1,29 @@
-import { ChangeEvent, ChangeEventHandler, ComponentPropsWithRef, forwardRef, useState } from 'react'
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  ComponentPropsWithRef,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react'
 
 import { CSS, styled } from 'styles'
 
 const InputContainer = styled('div', {
+  display: 'inline-flex',
+  flexDirection: 'column',
   fontFamily: '$main',
+  variants: {
+    block: {
+      true: {
+        width: '100%',
+      },
+    },
+  },
 })
 
 const StyledLabel = styled('label', {
-  display: 'flex',
+  display: 'inline-flex',
   boxSizing: 'border-box',
   alignItems: 'center',
   justifyContent: 'start',
@@ -19,6 +35,11 @@ const StyledLabel = styled('label', {
         '& > input': {
           borderColor: '$red',
         },
+      },
+    },
+    block: {
+      true: {
+        width: '100%',
       },
     },
   },
@@ -89,12 +110,17 @@ const LabelText = styled('span', {
 })
 
 const Feedback = styled('span', {
-  display: 'inline-block',
+  display: 'inline-flex',
   marginTop: '$1',
   color: '$red',
 })
 
 export interface TextboxProps extends ComponentPropsWithRef<typeof StyledInput> {
+  /**
+   * Defines a class for the textbox.
+   */
+  className?: string
+
   /**
    * Spans the input to the container width
    */
@@ -116,6 +142,11 @@ export interface TextboxProps extends ComponentPropsWithRef<typeof StyledInput> 
   label?: string
 
   /**
+   * Changes the element to a number type.
+   */
+  number?: boolean
+
+  /**
    * Handles changes in the input.
    *
    * @param event - The change event.
@@ -127,20 +158,36 @@ export interface TextboxProps extends ComponentPropsWithRef<typeof StyledInput> 
  * displays a styled input.
  */
 const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
-  { css, error, block = false, label = '', onChange, ...rest }: TextboxProps,
+  {
+    className,
+    css,
+    error,
+    block = false,
+    label = '',
+    number = false,
+    onChange,
+    ...rest
+  }: TextboxProps,
   ref
 ) {
   const { disabled, name, value } = rest
-  const [notEmpty, setEmpty] = useState(!!value)
+  const [isEmpty, setEmpty] = useState(!value)
+
+  // Set isEmpty to true if the given value is empty, otherwise set to false.
+  // It is only validated when the value prop is provided.
+  useEffect(() => {
+    value != undefined && setEmpty(!value)
+  }, [value])
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmpty(!!e.target.value)
+    // This validation is required for the uncontrolled textbox.
+    setEmpty(!e.target.value)
     onChange && onChange(e)
   }
 
   return (
-    <InputContainer>
-      <StyledLabel error={!!error}>
+    <InputContainer className={className} block={block}>
+      <StyledLabel error={!!error} block={block}>
         <StyledInput
           {...rest}
           aria-describedby={`${name}_error`}
@@ -148,15 +195,14 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
           css={css}
           onChange={handleOnChange}
           ref={ref}
-          type="text"
+          type={number ? 'number' : 'text'}
           value={value}
         />
-        <LabelText notEmpty={notEmpty} disabled={disabled}>
+        <LabelText notEmpty={!isEmpty} disabled={disabled}>
           {label}
         </LabelText>
       </StyledLabel>
-
-      <Feedback id={`${name}_error`}>{typeof error === 'string' && error}</Feedback>
+      {typeof error === 'string' && error && <Feedback id={`${name}_error`}>{error}</Feedback>}
     </InputContainer>
   )
 })

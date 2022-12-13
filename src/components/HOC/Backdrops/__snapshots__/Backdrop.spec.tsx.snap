@@ -3,7 +3,7 @@
 exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
 <DocumentFragment>
   <div
-    class="c-jxshxr c-jxshxr-dsZDrf-color-dark c-jxshxr-fTgyiV-show-true"
+    class="c-iaQuMe c-iaQuMe-dsZDrf-color-dark c-iaQuMe-fTgyiV-show-true"
     data-testid="backdrop-dark"
   />
   <div>
@@ -15,7 +15,7 @@ exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
 exports[`Backdrop HOC should display a text with a light backdrop 1`] = `
 <DocumentFragment>
   <div
-    class="c-jxshxr c-jxshxr-kQAVZF-color-light c-jxshxr-fTgyiV-show-true"
+    class="c-iaQuMe c-iaQuMe-kQAVZF-color-light c-iaQuMe-fTgyiV-show-true"
     data-testid="backdrop-light"
   />
   <div>

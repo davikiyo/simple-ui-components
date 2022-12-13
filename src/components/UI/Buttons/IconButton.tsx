@@ -13,12 +13,17 @@ const ButtonContainer = styled('button', {
   backgroundColor: 'transparent',
   transition: 'all .2s ease-in',
   outline: 'none',
-  '&:hover, &:focus': {
-    filter: 'drop-shadow(2px 4px 4px #707070)',
+  '@bp3': {
+    '&:hover, &:focus-visible': {
+      filter: 'drop-shadow(2px 2px 1px #707070)',
+    },
   },
   '&:active': {
     filter: 'none',
     transition: 'none',
+  },
+  '&:disabled': {
+    filter: 'unset',
   },
   variants: {
     rounded: {
@@ -26,12 +31,18 @@ const ButtonContainer = styled('button', {
         padding: '$2',
         borderRadius: '50%',
         backgroundColor: 'transparent',
-        '&:hover, &:focus': {
-          backgroundColor: 'rgba(0,0,0,0.2)',
-          filter: 'none',
+        '@bp3': {
+          '&:hover, &:focus-visible': {
+            backgroundColor: 'rgba(0,0,0,0.2)',
+            filter: 'none',
+          },
         },
         '&:active': {
           backgroundColor: 'rgba(0,0,0,0.5)',
+        },
+        '&:disabled': {
+          backgroundColor: 'unset',
+          filter: 'none',
         },
       },
     },

@@ -1,6 +1,5 @@
 {
-  "include": ["./src/**/*", "./stories/**/*"],
-  "exclude": ["./.storybook"],
+  "include": ["./src/**/*", "./stories/**/*", "./__mocks/**/*", "./.storybook/**/*"],
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "react-jsx",

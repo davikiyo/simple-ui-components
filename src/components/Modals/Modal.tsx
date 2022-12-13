@@ -12,7 +12,16 @@ const ModalCard = styled(Card, {
   transform: 'translate(-50%, -50%)',
   zIndex: 999,
   backgroundColor: '#fff',
-  animation: `${fadeIn} .2s, ${slideBottomUp} .5s linear`,
+  visibility: 'hidden',
+
+  variants: {
+    show: {
+      true: {
+        visibility: 'visible',
+        animation: `${fadeIn} .2s ease-in, ${slideBottomUp} .5s`,
+      },
+    },
+  },
 })
 
 export interface ModalProps extends BackdropProps {
@@ -67,11 +76,11 @@ export function PureModal({
   children,
   show = false,
   height = '100%',
-  width = '100%',
+  width = 'calc(100% - 32px)',
   maxHeight = '70vh',
   maxWidth = '570px',
 }: ModalProps) {
-  return show ? (
+  return (
     <ModalCard
       role="dialog"
       aria-labelledby={ariaLabelledBy}
@@ -88,10 +97,11 @@ export function PureModal({
       }}
       border={false}
       padding="md"
+      show={show}
     >
       {children}
     </ModalCard>
-  ) : null
+  )
 }
 
 export default withBackdrop(PureModal, { color: 'dark', fixContent: true })

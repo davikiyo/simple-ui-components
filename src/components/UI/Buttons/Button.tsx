@@ -1,6 +1,9 @@
 import { styled, CSS } from 'styles'
 
 const StyledButton = styled('button', {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: '$2',
   border: 'none',
   backgroundColor: '$secondary',
@@ -18,9 +21,9 @@ const StyledButton = styled('button', {
     },
     outlined: {
       true: {
-        backgroundColor: '#fff',
+        backgroundColor: 'transparent',
         color: '#000',
-        border: '1px solid $secondary',
+        border: '2px solid $secondary',
         '&:disabled': {
           border: 'none',
         },
@@ -30,13 +33,11 @@ const StyledButton = styled('button', {
   '&:active': {
     filter: 'brightness(0.8)',
     transition: 'none',
+    boxShadow: 'none',
   },
   '@bp3': {
-    '&:hover, &:focus': {
+    '&:hover, &:focus-visible': {
       boxShadow: '2px 4px 6px #ccc',
-    },
-    '&:active': {
-      boxShadow: 'none',
     },
   },
   '&:disabled': {
@@ -102,7 +103,7 @@ export default function Button({
   onClick,
   outlined = false,
   rounded = false,
-  type = 'button',
+  type,
   disabled = false,
 }: ButtonProps) {
   return (

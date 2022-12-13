@@ -1,7 +1,6 @@
 import { forwardRef } from 'react'
 
 import { styled, ROOT_FONT_SIZE } from 'styles'
-import svgSrc from 'assets/icons.svg'
 import { IconName } from 'types/Icon'
 
 export interface IconProps {
@@ -49,18 +48,12 @@ const Icon = forwardRef<HTMLSpanElement, IconProps>(function (
       className={className}
       css={{
         color,
-        maxWidth: `${width / ROOT_FONT_SIZE}rem`,
-        maxHeight: `${height / ROOT_FONT_SIZE}rem`,
+        width: `${width / ROOT_FONT_SIZE}rem`,
+        height: `${height / ROOT_FONT_SIZE}rem`,
       }}
     >
-      <svg
-        role="img"
-        aria-label={name}
-        width={`${width / ROOT_FONT_SIZE}rem`}
-        height={`${height / ROOT_FONT_SIZE}rem`}
-        fill="currentColor"
-      >
-        <use href={`${svgSrc}#${name}`} />
+      <svg role="img" aria-label={name} height="100%" width="100%" fill="currentColor">
+        <use href={`#simple-ui-icon-${name}`} />
       </svg>
     </IconContainer>
   )

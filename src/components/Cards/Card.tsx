@@ -35,7 +35,6 @@ export interface CardProps extends HTMLProps<HTMLDivElement> {
 }
 
 const CardContainer = styled('div', {
-  margin: 0,
   borderRadius: '8px',
   display: 'inline-flex',
   flexDirection: 'column',

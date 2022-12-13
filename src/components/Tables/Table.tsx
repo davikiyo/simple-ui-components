@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react'
-// import { CSS } from '@stitches/react'
 
 import { styled, CSS } from 'styles'
 import { sortObjects } from 'utils/utility'
@@ -30,6 +29,11 @@ export interface TableProps {
    * If no key is found in the `fields`, the value will be ignored.
    */
   data: TableData[]
+
+  /**
+   * The property to be used as a key. `id` is used as default.
+   */
+  dataKey?: keyof TableData
 
   /**
    * The table field information. Matches the key in `data`.
@@ -118,6 +122,7 @@ export default function Table({
   css,
   tableCss,
   data,
+  dataKey = 'id',
   fields,
   rowHeight,
   height,
@@ -191,6 +196,7 @@ export default function Table({
         )}
         <TableBody
           data={onSortRequest ? data : tableData}
+          dataKey={dataKey}
           fields={fields}
           rowHeight={rowHeight}
           paddings={paddings}

@@ -2,6 +2,11 @@ import { styled } from 'styles'
 
 export interface GridProps {
   /**
+   * Defines a class for the grid.
+   */
+  className?: string
+
+  /**
    * Specifies the number of maximum columns.
    */
   maxColumn?: number
@@ -37,9 +42,16 @@ const GridContainer = styled('div', {
 /**
  * renders the children in the specified columns and gap.
  */
-export default function Grid({ maxColumn = 4, gap = 10, minWidth = 250, children }: GridProps) {
+export default function Grid({
+  className,
+  maxColumn = 4,
+  gap = 10,
+  minWidth = 250,
+  children,
+}: GridProps) {
   return (
     <GridContainer
+      className={className}
       css={{
         $$columnCount: maxColumn,
         $$layoutGap: `${gap}px`,
