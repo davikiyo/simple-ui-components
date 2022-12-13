@@ -4,6 +4,7 @@ import TableHead from '../TableHead'
 
 export default function TableContentVertical({
   data,
+  dataKey,
   fields,
   rowHeight,
   paddings,
@@ -16,7 +17,7 @@ export default function TableContentVertical({
       {fields.map(({ key, title, sortable, renderCell }) => {
         const dataList = data.map((item) => (
           <Td
-            key={`${key}_${item.id}`}
+            key={`${key}_${dataKey && item[dataKey] ? item[dataKey] : JSON.stringify(item[key])}`}
             css={{
               padding: paddings,
             }}

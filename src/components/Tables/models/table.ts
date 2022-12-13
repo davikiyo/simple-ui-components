@@ -10,7 +10,7 @@ export type TableData<T = any> = TableDataType<T> & {
   /**
    * The ID of an item.
    */
-  id: string | number
+  id?: string | number
 }
 
 export type TableKeys<T = any> = Extract<keyof T, string>

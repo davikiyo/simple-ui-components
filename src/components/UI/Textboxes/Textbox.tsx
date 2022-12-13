@@ -1,4 +1,11 @@
-import { ChangeEvent, ChangeEventHandler, ComponentPropsWithRef, forwardRef, useState } from 'react'
+import {
+  ChangeEvent,
+  ChangeEventHandler,
+  ComponentPropsWithRef,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react'
 
 import { CSS, styled } from 'styles'
 
@@ -164,7 +171,12 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   ref
 ) {
   const { disabled, name, value } = rest
-  const [notEmpty, setEmpty] = useState(!!value)
+  const [isEmpty, setEmpty] = useState(!!value)
+
+  // setEmpty to true if the given value is empty.
+  useEffect(() => {
+    if (!value) setEmpty(true)
+  }, [])
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setEmpty(!!e.target.value)
@@ -184,7 +196,7 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
           type={number ? 'number' : 'text'}
           value={value}
         />
-        <LabelText notEmpty={notEmpty} disabled={disabled}>
+        <LabelText notEmpty={!isEmpty} disabled={disabled}>
           {label}
         </LabelText>
       </StyledLabel>

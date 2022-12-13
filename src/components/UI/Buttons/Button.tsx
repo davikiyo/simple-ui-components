@@ -1,6 +1,9 @@
 import { styled, CSS } from 'styles'
 
 const StyledButton = styled('button', {
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   padding: '$2',
   border: 'none',
   backgroundColor: '$secondary',
