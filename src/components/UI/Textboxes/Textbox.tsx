@@ -173,12 +173,14 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   const { disabled, name, value } = rest
   const [isEmpty, setEmpty] = useState(!value)
 
-  // setEmpty to true if the given value is empty.
+  // Set isEmpty to true if the given value is empty, otherwise set to false.
+  // It is only validated when the value prop is provided.
   useEffect(() => {
-    if (!value) setEmpty(true)
-  }, [])
+    value != undefined && setEmpty(!value)
+  }, [value])
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // This validation is required for the uncontrolled textbox.
     setEmpty(!e.target.value)
     onChange && onChange(e)
   }
