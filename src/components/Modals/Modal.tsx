@@ -10,7 +10,7 @@ const ModalCard = styled(Card, {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  zIndex: 999,
+  zIndex: 10000,
   backgroundColor: '#fff',
   visibility: 'hidden',
 

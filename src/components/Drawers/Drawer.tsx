@@ -12,7 +12,7 @@ const DrawerCard = styled(Card, {
   left: 0,
   height: '100vh',
   borderRadius: 0,
-  zIndex: 9999,
+  zIndex: 10000,
   transitionProperty: 'left, visibility',
   transitionDuration: '.3s',
   transitionTimingFunction: 'linear',
