@@ -20,10 +20,10 @@ describe('Modal component', () => {
     expect(screen.getByTestId('backdrop-dark')).toBeInTheDocument()
   })
 
-  it.skip('should not display a modal when false', () => {
+  it('should not display a modal when false', () => {
     show = false
     initialize()
-    expect(screen.queryByRole('dialog')).not.toBeVisible()
+    expect(screen.queryByRole('dialog')).toBeNull()
   })
 
   it('should trigger the onClose handler when clicked the backdrop', async () => {
