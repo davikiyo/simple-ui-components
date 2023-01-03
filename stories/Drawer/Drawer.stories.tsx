@@ -11,13 +11,17 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
+} as ComponentMeta<typeof PureDrawer>
+
+export const Normal: ComponentStoryObj<typeof PureDrawer> = {
+  args: {
+    show: false,
+  },
   render: (args) => {
     const [show, setShow] = useState(args.show)
     useEffect(() => {
       setShow(args.show)
     }, [args.show])
-
-    const style = { transition: 'margin .3s ease-in-out' }
 
     return (
       <>
@@ -28,26 +32,19 @@ export default {
             </Button>
           </div>
         </Drawer>
+        <AppBar sticky>
+          {!show && <IconButton icon="menu" onClick={() => setShow(true)} />}
+          <div style={{ fontSize: '26px', marginLeft: '16px' }}>TEST</div>
+        </AppBar>
         <div
           style={{
-            ...style,
             padding: '16px',
           }}
-          {...(show && args.persist && { style: { ...style, marginLeft: drawerWidth } })}
         >
-          <Button onClick={() => setShow(true)} rounded>
-            Open Drawer
-          </Button>
           <p>{textData}</p>
         </div>
       </>
     )
-  },
-} as ComponentMeta<typeof PureDrawer>
-
-export const Normal: ComponentStoryObj<typeof PureDrawer> = {
-  args: {
-    show: false,
   },
 }
 

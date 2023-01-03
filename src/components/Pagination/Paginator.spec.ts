@@ -14,6 +14,8 @@ describe('Paginator class', () => {
       ${2}    | ${3}  | ${[1, 2, 3]}
       ${5}    | ${5}  | ${[3, 4, 5]}
       ${3}    | ${5}  | ${[2, 3, 4]}
+      ${1}    | ${1}  | ${[1]}
+      ${1}    | ${2}  | ${[1, 2]}
     `(
       'should return $result for the given inputs => current: $current, pages: $pages',
       ({ current, pages, result }: inputType) => {

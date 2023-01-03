@@ -45,7 +45,10 @@ export default class Paginator {
       startNumber = paginate.pages - paginate.maxElements + 1
     }
 
-    return Array.from({ length: paginate.maxElements }, (_, i) => i + startNumber)
+    return Array.from(
+      { length: pages > paginate.maxElements ? paginate.maxElements : pages },
+      (_, i) => i + startNumber
+    )
   }
 
   /**
