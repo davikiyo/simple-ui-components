@@ -33,6 +33,6 @@ describe('Backdrop HOC', () => {
   it('should fix the content', () => {
     WrappedComponent = withBackDrop(TestComponent, { fixContent: true })
     render(<WrappedComponent show />)
-    expect(document.body.style.overflowY).toBe('hidden')
+    expect(document.body.style.overflow).toBe('hidden')
   })
 })
