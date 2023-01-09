@@ -152,15 +152,21 @@ export default function Pagination({
   const renderPageNumbers = (pages: number, currentPage: number) => {
     const pageSlice = Paginator.generateSlice(currentPage, pages, maxElements)
 
-    return pageSlice.map((num) => (
-      <PageNumber
-        key={num}
-        onClick={() => onClickHandler(num)}
-        {...(num == currentPage && { current: true })}
-      >
-        {num}
-      </PageNumber>
-    ))
+    return (
+      <>
+        <Dots show={!pageSlice.includes(1)} />
+        {pageSlice.map((num) => (
+          <PageNumber
+            key={num}
+            onClick={() => onClickHandler(num)}
+            {...(num == currentPage && { current: true })}
+          >
+            {num}
+          </PageNumber>
+        ))}
+        <Dots show={!pageSlice.includes(pages)} />
+      </>
+    )
   }
 
   return (
@@ -172,11 +178,7 @@ export default function Pagination({
       >
         <Icon name="chevron-circle-left" height={BUTTON_SIZE} width={BUTTON_SIZE} />
       </MovePrevButton>
-      <Dots show={Boolean(pages > 3 && currentPage > 2)} />
-
       {renderPageNumbers(pages, currentPage)}
-
-      <Dots show={Boolean(pages > 3 && currentPage < pages - 1)} />
       <MoveNextButton
         aria-label="NextPage"
         onClick={onNextClick}
