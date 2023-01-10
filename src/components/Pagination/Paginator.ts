@@ -1,22 +1,10 @@
-const MAX_ELEMENTS = 3
+const DEFAULT_MAX_ELEMENTS = 3
 /**
  * Paginator
  *
  * generates an array of numbers to use in the pagination.
  */
 export default class Paginator {
-  private currentPage: number
-  private pages: number
-  private midIndex: number
-  private maxElements: number
-
-  private constructor(currentPage: number, pages: number, maxElements: number) {
-    this.currentPage = currentPage
-    this.pages = pages
-    this.midIndex = Math.floor(maxElements / 2)
-    this.maxElements = maxElements
-  }
-
   /**
    * Constructs and generate a slice of pages.
    *
@@ -33,20 +21,19 @@ export default class Paginator {
   public static generateSlice(
     currentPage: number,
     pages: number,
-    maxElements: number = MAX_ELEMENTS
+    maxElements: number = DEFAULT_MAX_ELEMENTS
   ) {
-    const paginate = new Paginator(currentPage, pages, maxElements)
-
-    let startNumber = paginate.currentPage - paginate.midIndex
+    const middle = Math.floor(maxElements / 2)
+    let startNumber = currentPage - middle
 
     if (startNumber < 1) {
       startNumber = 1
-    } else if (startNumber + paginate.maxElements > paginate.pages) {
-      startNumber = paginate.pages - paginate.maxElements + 1
+    } else if (pages - maxElements + 1 > 0 && startNumber + maxElements > pages) {
+      startNumber = pages - maxElements + 1
     }
 
     return Array.from(
-      { length: pages > paginate.maxElements ? paginate.maxElements : pages },
+      { length: pages > maxElements ? maxElements : pages },
       (_, i) => i + startNumber
     )
   }
