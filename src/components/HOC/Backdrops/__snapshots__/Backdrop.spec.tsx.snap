@@ -3,11 +3,16 @@
 exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
 <DocumentFragment>
   <div
+    aria-hidden="false"
     class="c-loVsnb c-loVsnb-dsZDrf-color-dark c-loVsnb-fTgyiV-show-true"
     data-testid="backdrop-dark"
   />
-  <div>
-    TEST
+  <div
+    tabindex="0"
+  >
+    <div>
+      TEST
+    </div>
   </div>
 </DocumentFragment>
 `;
@@ -15,11 +20,16 @@ exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
 exports[`Backdrop HOC should display a text with a light backdrop 1`] = `
 <DocumentFragment>
   <div
+    aria-hidden="false"
     class="c-loVsnb c-loVsnb-kQAVZF-color-light c-loVsnb-fTgyiV-show-true"
     data-testid="backdrop-light"
   />
-  <div>
-    TEST
+  <div
+    tabindex="0"
+  >
+    <div>
+      TEST
+    </div>
   </div>
 </DocumentFragment>
 `;

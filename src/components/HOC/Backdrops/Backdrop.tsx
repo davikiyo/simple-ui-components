@@ -1,5 +1,6 @@
 import { ComponentType, useEffect } from 'react'
 import { styled } from 'styles'
+import FocusTrap from './FocusTrap'
 
 const StyledBackdrop = styled('div', {
   position: 'fixed',
@@ -94,8 +95,11 @@ export default function withBackDrop<T extends BackdropProps = BackdropProps>(
           color={color}
           show={show}
           onClick={onClose}
+          aria-hidden={!show}
         />
-        <Component {...(props as T)} show={show} />
+        <FocusTrap>
+          <Component {...(props as T)} show={show} />
+        </FocusTrap>
       </>
     )
   }
