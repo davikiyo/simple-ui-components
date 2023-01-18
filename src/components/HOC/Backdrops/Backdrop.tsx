@@ -97,7 +97,7 @@ export default function withBackDrop<T extends BackdropProps = BackdropProps>(
           onClick={onClose}
           aria-hidden={!show}
         />
-        <FocusTrap>
+        <FocusTrap active={show}>
           <Component {...(props as T)} show={show} />
         </FocusTrap>
       </>

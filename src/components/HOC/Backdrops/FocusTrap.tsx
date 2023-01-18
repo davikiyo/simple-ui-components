@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 interface FocusTrapProps {
   children: JSX.Element
+  active: boolean
 }
 
 const FOCUSABLE_ELEMENTS = [
@@ -18,56 +19,56 @@ const FOCUSABLE_ELEMENTS = [
 
 const TAB_KEY = 'Tab'
 
-export default function FocusTrap({ children }: FocusTrapProps) {
+export default function FocusTrap({ active, children }: FocusTrapProps) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!ref?.current) return
+    if (ref?.current && active) {
+      let eventListener: {
+        (event: KeyboardEvent): void
+      }
+      ref.current.focus()
 
-    let eventListener: {
-      (event: KeyboardEvent): void
-    }
-    ref.current.focus()
+      const elements = ref.current.querySelectorAll(
+        FOCUSABLE_ELEMENTS.join(',')
+      ) as NodeListOf<HTMLElement>
 
-    const elements = ref.current.querySelectorAll(
-      FOCUSABLE_ELEMENTS.join(',')
-    ) as NodeListOf<HTMLElement>
+      if (elements.length > 0) {
+        const first = elements[0]
+        const last = elements[elements.length - 1]
+        eventListener = (event: KeyboardEvent) => {
+          if (event.key != TAB_KEY) return
 
-    if (elements.length > 0) {
-      const first = elements[0]
-      const last = elements[elements.length - 1]
-      eventListener = (event: KeyboardEvent) => {
-        if (event.key != TAB_KEY) return
-
-        if (event.shiftKey) {
-          if (document.activeElement === first) {
-            last.focus()
-            event.preventDefault()
-          }
-        } else {
-          if (document.activeElement === last) {
-            first.focus()
-            event.preventDefault()
+          if (event.shiftKey) {
+            if (document.activeElement === first) {
+              last.focus()
+              event.preventDefault()
+            }
+          } else {
+            if (document.activeElement === last) {
+              first.focus()
+              event.preventDefault()
+            }
           }
         }
-      }
-      ref.current.addEventListener('keydown', eventListener)
-    } else {
-      eventListener = (event) => {
-        if (event.key != TAB_KEY) return
+        ref.current.addEventListener('keydown', eventListener)
+      } else {
+        eventListener = (event) => {
+          if (event.key != TAB_KEY) return
 
-        if (document.activeElement !== ref.current) {
-          ref?.current?.focus()
+          if (document.activeElement !== ref.current) {
+            ref?.current?.focus()
+          }
+          event.preventDefault()
         }
-        event.preventDefault()
+        ref.current.addEventListener('keydown', eventListener)
       }
-      ref.current.addEventListener('keydown', eventListener)
-    }
 
-    return () => {
-      ref?.current && ref.current.removeEventListener('keydown', eventListener)
+      return () => {
+        ref?.current && ref.current.removeEventListener('keydown', eventListener)
+      }
     }
-  }, [children])
+  }, [children, active])
 
   return (
     <div ref={ref} tabIndex={0}>

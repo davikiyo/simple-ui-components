@@ -18,9 +18,10 @@ describe('FocusTrap', () => {
     render(
       <>
         <button data-testid="not-focusable">Not Focusable</button>
-        <FocusTrap>{children}</FocusTrap>
+        <FocusTrap active>{children}</FocusTrap>
       </>
     )
+
   it('should only focus on the wrapped children', async () => {
     initialize()
 
