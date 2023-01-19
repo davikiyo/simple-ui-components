@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
 import { useEffect, useState } from 'react'
 
 import { PureModal } from '../../src/components/Modals/Modal'
-import { Button, Modal } from 'components'
+import { Button, Modal, Textbox } from 'components'
 
 export const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nunc, ultricies a
   lobortis non, volutpat vel libero. Aliquam erat volutpat. Pellentesque habitant morbi
@@ -73,7 +73,14 @@ export const Normal: ComponentStoryObj<typeof Modal> = {
     width: 'calc(100% - 32px)',
     show: false,
     ariaLabelledBy: 'title',
-    children: <h1 id="title">TEST</h1>,
+    children: (
+      <>
+        <h1 id="title">TEST</h1>
+        <Textbox label="TEST" />
+        <br />
+        <Button>TEST</Button>
+      </>
+    ),
   },
 }
 

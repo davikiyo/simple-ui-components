@@ -24,20 +24,20 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
 
   useEffect(() => {
     if (ref?.current && active) {
-      let eventListener: {
-        (event: KeyboardEvent): void
-      }
       ref.current.focus()
 
       const elements = ref.current.querySelectorAll(
         FOCUSABLE_ELEMENTS.join(',')
       ) as NodeListOf<HTMLElement>
 
+      let eventListener: (event: KeyboardEvent) => void
+      const isNotTabKey = (event: KeyboardEvent) => event.key !== TAB_KEY
+
       if (elements.length > 0) {
         const first = elements[0]
         const last = elements[elements.length - 1]
         eventListener = (event: KeyboardEvent) => {
-          if (event.key != TAB_KEY) return
+          if (isNotTabKey(event)) return
 
           if (event.shiftKey) {
             if (document.activeElement === first) {
@@ -54,12 +54,12 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
         ref.current.addEventListener('keydown', eventListener)
       } else {
         eventListener = (event) => {
-          if (event.key != TAB_KEY) return
+          if (isNotTabKey(event)) return
 
           if (document.activeElement !== ref.current) {
             ref?.current?.focus()
+            event.preventDefault()
           }
-          event.preventDefault()
         }
         ref.current.addEventListener('keydown', eventListener)
       }
@@ -68,7 +68,7 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
         ref?.current && ref.current.removeEventListener('keydown', eventListener)
       }
     }
-  }, [children, active])
+  }, [active])
 
   return (
     <div ref={ref} tabIndex={0}>
