@@ -10,13 +10,13 @@ const ButtonContainer = styled('button', {
   padding: 0,
   borderRadius: 0,
   color: 'inherit',
+  willChange: 'filter',
   backgroundColor: 'transparent',
   transition: 'all .2s ease-in',
   outline: 'none',
   '@bp3': {
     '&:hover, &:focus-visible': {
       filter: 'drop-shadow(2px 2px 1px #707070)',
-      transform: 'translateZ(0)',
     },
   },
   '&:active': {

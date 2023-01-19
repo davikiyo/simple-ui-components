@@ -9,6 +9,7 @@ const ModalCard = styled(Card, {
   position: 'fixed',
   top: '50%',
   left: '50%',
+  willChange: 'animation',
   transform: 'translate(-50%, -50%)',
   zIndex: 10000,
   backgroundColor: '#fff',
