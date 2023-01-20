@@ -64,27 +64,30 @@ export default function withBackDrop<T extends BackdropProps = BackdropProps>(
   Component: ComponentType<T>,
   { color = 'dark', fixContent = false }: BackdropOptions = {}
 ) {
-  const resetProperties = () => {
-    document.body.style.removeProperty('overflow')
-    document.body.style.removeProperty('touch-action')
-    document.body.style.removeProperty('width')
-    document.body.style.removeProperty('height')
-  }
-
   const WrappedComponent = ({ onClose, show = false, ...props }: T) => {
+    const positionY = window.scrollY
     // Set overflow property
     useEffect(() => {
       if (fixContent && show) {
-        document.body.style.overflow = 'hidden'
+        document.body.style.overflow =
+          document.body.clientHeight > window.innerHeight ? 'scroll' : 'hidden'
         document.body.style.touchAction = 'none'
-        document.body.style.width = '100vw'
+        document.body.style.width = '100%'
         document.body.style.height = '100%'
-      } else {
-        resetProperties()
+        document.body.style.position = 'fixed'
+        document.body.style.top = `-${positionY}px`
+        document.body.style.left = '0'
       }
 
       return () => {
-        resetProperties()
+        document.body.style.removeProperty('overflow')
+        document.body.style.removeProperty('touch-action')
+        document.body.style.removeProperty('width')
+        document.body.style.removeProperty('height')
+        document.body.style.removeProperty('position')
+        document.body.style.removeProperty('top')
+        document.body.style.removeProperty('left')
+        window.scrollTo(0, positionY) // Maintain the scroll position
       }
     }, [show])
 

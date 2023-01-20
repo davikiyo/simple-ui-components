@@ -66,7 +66,7 @@ export function PureDrawer({
         width,
         '&.hidden': {
           transform:
-            typeof width === 'string' ? `translateX(-${width})` : `translateX(-${-width}px)`,
+            typeof width === 'string' ? `translateX(-${width})` : `translateX(-${width}px)`,
         },
       }}
       border={false}

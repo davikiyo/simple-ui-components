@@ -11,6 +11,8 @@ beforeEach(() => {
 })
 
 describe('Backdrop HOC', () => {
+  window.scrollTo = jest.fn()
+
   it('should not display a text by default', () => {
     render(<WrappedComponent />)
     expect(screen.queryByText('TEST')).toBeNull()

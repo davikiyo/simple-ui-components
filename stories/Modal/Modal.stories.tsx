@@ -58,7 +58,11 @@ export default {
             fontSize: '18px',
           }}
         >
-          <Button onClick={() => setShow(true)} rounded>
+          <Button
+            css={{ position: 'fixed', top: '50px', left: '50%', transform: 'translateX(-50%)' }}
+            onClick={() => setShow(true)}
+            rounded
+          >
             Open Modal
           </Button>
           <p style={{ width: '375px', padding: '0 16px', boxSizing: 'border-box' }}>{textData}</p>

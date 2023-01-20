@@ -7,6 +7,7 @@ describe('Drawer component', () => {
   let show = true
   let persist = false
   const onCloseMock = jest.fn()
+  window.scrollTo = jest.fn()
 
   beforeEach(() => {
     show = true
