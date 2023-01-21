@@ -60,6 +60,7 @@ const NavigationButton = styled('button', {
   boxSizing: 'border-box',
   backgroundColor: 'transparent',
   border: 'none',
+  borderRadius: '50%',
   color: '$indigo',
   '@bp3': {
     cursor: 'pointer',
@@ -72,7 +73,7 @@ const NavigationButton = styled('button', {
   },
   '&:disabled': {
     filter: 'brightness(0.8)',
-    cursor: 'not-allowed',
+    cursor: 'default',
   },
   transition: 'filter 0.1s linear',
 })
@@ -100,9 +101,11 @@ const Dots = styled('span', {
   },
 })
 
-const PageNumber = styled('span', {
+const PageNumber = styled('button', {
   boxSizing: 'border-box',
   borderRadius: '50%',
+  color: '#000',
+  backgroundColor: '#fff',
   border: 'solid 1px #707070',
   margin: `0 $2`,
   width: `${BUTTON_SIZE / ROOT_FONT_SIZE}rem`,
@@ -111,6 +114,7 @@ const PageNumber = styled('span', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  userSelect: 'none',
   '@bp3': {
     cursor: 'pointer',
     '&:hover': {
@@ -125,6 +129,7 @@ const PageNumber = styled('span', {
     current: {
       true: {
         backgroundColor: '#c0c0c0',
+        cursor: 'default',
         '&:active': {
           backgroundColor: '#c0c0c0',
         },

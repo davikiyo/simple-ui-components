@@ -13,7 +13,7 @@ const DrawerCard = styled(Card, {
   height: '100vh',
   borderRadius: 0,
   zIndex: 10000,
-  transitionProperty: 'left, visibility',
+  transitionProperty: 'transform, visibility',
   transitionDuration: '.3s',
   transitionTimingFunction: 'linear',
 
@@ -62,7 +62,13 @@ export function PureDrawer({
     <DrawerCard
       role="navigation"
       className={drawerCardClasses}
-      css={{ width, '&.hidden': { left: typeof width === 'string' ? `-${width}` : -width } }}
+      css={{
+        width,
+        '&.hidden': {
+          transform:
+            typeof width === 'string' ? `translateX(-${width})` : `translateX(-${width}px)`,
+        },
+      }}
       border={false}
       padding="none"
       {...(persist && { persist, shadow: true })}

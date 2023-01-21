@@ -43,7 +43,7 @@ const StyledButton = styled('button', {
   '&:disabled': {
     backgroundColor: '$lightGraySecondary',
     color: '#000',
-    cursor: 'not-allowed',
+    cursor: 'default',
     boxShadow: 'none',
     filter: 'none',
   },

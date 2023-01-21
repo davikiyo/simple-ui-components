@@ -10,6 +10,7 @@ const ButtonContainer = styled('button', {
   padding: 0,
   borderRadius: 0,
   color: 'inherit',
+  willChange: 'filter',
   backgroundColor: 'transparent',
   transition: 'all .2s ease-in',
   outline: 'none',
@@ -23,7 +24,7 @@ const ButtonContainer = styled('button', {
     transition: 'none',
   },
   '&:disabled': {
-    filter: 'unset',
+    filter: 'none',
   },
   variants: {
     rounded: {

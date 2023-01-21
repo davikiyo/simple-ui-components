@@ -6,6 +6,7 @@ import Modal from './Modal'
 describe('Modal component', () => {
   let show = true
   const onCloseMock = jest.fn()
+  window.scrollTo = jest.fn()
 
   beforeEach(() => {
     show = true
