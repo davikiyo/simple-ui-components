@@ -71,7 +71,7 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
   }, [active])
 
   return (
-    <div ref={ref} tabIndex={0}>
+    <div ref={ref} tabIndex={0} style={{ outline: 'none' }}>
       {children}
     </div>
   )

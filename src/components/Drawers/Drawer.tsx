@@ -15,7 +15,7 @@ const DrawerCard = styled(Card, {
   zIndex: 10000,
   transitionProperty: 'transform, visibility',
   transitionDuration: '.3s',
-  transitionTimingFunction: 'linear',
+  transitionTimingFunction: 'ease-in',
 
   '&.hidden': {
     visibility: 'hidden',
