@@ -1,6 +1,6 @@
 {
   "name": "@davikiyo/simple-ui-components",
-  "version": "0.6.4",
+  "version": "0.7.0-rc.0",
   "description": "UI library for webpages.",
   "repository": {
     "type": "git",
@@ -30,7 +30,7 @@
   "files": [
     "lib"
   ],
-  "main": "./lib/index.umd.js",
+  "main": "./lib/index.umd.cjs",
   "module": "./lib/index.es.js",
   "types": "./lib/index.d.ts",
   "exports": {

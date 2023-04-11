@@ -18,7 +18,8 @@ export default defineConfig(() => {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
         name: 'SimpleUIComponents',
-        fileName: (format) => `index.${format}.js`,
+        fileName: (format) =>
+          format === 'umd' || format === 'commonjs' ? `index.${format}.cjs` : `index.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'classnames', '@stitches/react'],
