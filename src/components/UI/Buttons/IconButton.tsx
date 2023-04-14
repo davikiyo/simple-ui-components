@@ -14,6 +14,7 @@ const ButtonContainer = styled('button', {
   backgroundColor: 'transparent',
   transition: 'all .2s ease-in',
   outline: 'none',
+  cursor: 'pointer',
   '@bp3': {
     '&:hover, &:focus-visible': {
       filter: 'drop-shadow(2px 2px 1px #707070)',
@@ -25,6 +26,7 @@ const ButtonContainer = styled('button', {
   },
   '&:disabled': {
     filter: 'none',
+    cursor: 'default',
   },
   variants: {
     rounded: {

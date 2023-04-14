@@ -8,6 +8,7 @@ exports[`Backdrop HOC should display a text with a dark backdrop 1`] = `
     data-testid="backdrop-dark"
   />
   <div
+    data-testid="focus-trap"
     style="outline: none;"
     tabindex="0"
   >
@@ -26,6 +27,7 @@ exports[`Backdrop HOC should display a text with a light backdrop 1`] = `
     data-testid="backdrop-light"
   />
   <div
+    data-testid="focus-trap"
     style="outline: none;"
     tabindex="0"
   >
