@@ -3,12 +3,22 @@ import { useEffect, useMemo, useState } from 'react'
 import { styled, CSS } from 'styles'
 import { sortObjects } from 'utils/utility'
 
-import { TableField, TableKeys, TableData } from './models/table'
-import TableBody from './TableBody'
+import type { DataKeyType, TableData } from './models/table'
+import TableBody, { TableField } from './TableBody'
 import TableHead from './TableHead'
 import TableRow from './TableRow'
 
-export interface TableProps {
+export type SortKeyType = {
+  key: string
+  order: SORT_ORDER
+}
+
+export interface TableFieldType<T extends Record<string, unknown>> extends TableField {
+  key: DataKeyType<T>
+  renderCell?: (data: TableData<T>) => JSX.Element | string
+}
+
+export interface TableProps<T extends Record<string, unknown>> {
   /**
    * Overrides the style in the table container.
    */
@@ -28,19 +38,72 @@ export interface TableProps {
    * The table data. Matches the key in the fields.
    * If no key is found in the `fields`, the value will be ignored.
    */
-  data: TableData[]
+  data: TableData<T>[]
 
   /**
-   * The property to be used as a key. `id` is used as default.
+   * The property to be used as a key. (Default: `id`)
+   *
+   * **NOTE:** You can provide a key delimited by period (.) to get
+   * the recursive item up to 5 recursion.
+   *
+   * @example
+   * An example using `symbol` in `company`.
+   * ```
+   * const data = [
+   *  {
+   *    id: "C1",
+   *    company: {
+   *      name: "Example"
+   *      symbol: "EXAM"
+   *    }
+   *  }
+   * ]
+   *  <Table
+   *    dataKey="company.symbol"
+   *   //...
+   *  />
+   * ```
    */
-  dataKey?: keyof TableData
+  dataKey?: DataKeyType<T>
 
   /**
    * The table field information. Matches the key in `data`.
    * If no `title` is provided, the `key` properties are displayed as titles.
    * The fields becomes sortable by providing the `sortable` flag.
+   *
+   * **NOTE:** You can provide a key delimited by period (.) to get
+   * the nested item. (Up to depth of 5)
+   *
+   * @example
+   * An example using `symbol` in `company`.
+   * ```
+   * const data = [
+   *  {
+   *    id: "C1",
+   *    company: {
+   *      name: "Example"
+   *      symbol: "EXAM"
+   *    }
+   *  }
+   * ]
+   * const fields = [
+   *  {
+   *    key: "company.name",
+   *    title: "Company Name"
+   *  },
+   *  {
+   *    key: "company.symbol",
+   *    title: "Symbol"
+   *  }
+   * ]
+   *  <Table
+   *    data={data}
+   *    fields={fields}
+   *    //...
+   *  />
+   * ```
    */
-  fields: TableField[]
+  fields: TableFieldType<T>[]
 
   /**
    * Defines the paddings for each cell in the table.
@@ -114,10 +177,8 @@ export enum SORT_ORDER {
   DESC = 'DESC',
 }
 
-export type SortKeyType = { key: TableKeys; order: SORT_ORDER }
-
 /** displays the given data in a styled table. */
-export default function Table({
+export default function Table<T extends Record<string, unknown>>({
   className,
   css,
   tableCss,
@@ -127,11 +188,11 @@ export default function Table({
   rowHeight,
   height,
   width,
-  onSortRequest = undefined,
+  onSortRequest,
   paddings = 16,
   stickyHeader = false,
   verticalHeader = false,
-}: TableProps) {
+}: TableProps<T>) {
   const [sortKey, setSortKey] = useState<SortKeyType>({
     key: '',
     order: SORT_ORDER.ASC,
@@ -148,10 +209,10 @@ export default function Table({
   }, [data, sortKey])
 
   useEffect(() => {
-    if (sortKey.key) onSortRequest && onSortRequest(sortKey)
+    if (sortKey.key && onSortRequest) onSortRequest(sortKey)
   }, [sortKey, onSortRequest])
 
-  const onSortHandler = (title: TableKeys) => {
+  const onSortHandler = (title: string) => {
     const key = fields.find((field) => field.key === title || field.title === title)?.key
     if (key) {
       const currentOrder =
@@ -188,14 +249,14 @@ export default function Table({
                     sortOrder: sortKey.order,
                   })}
                 >
-                  {title ? title : (key as string)}
+                  {title || key}
                 </TableHead>
               ))}
             </TableRow>
           </TableHeadContainer>
         )}
         <TableBody
-          data={onSortRequest ? data : tableData}
+          data={tableData}
           dataKey={dataKey}
           fields={fields}
           rowHeight={rowHeight}

@@ -1,6 +1,14 @@
-import { TableProps } from '../Table'
-import { Td } from './TableBody'
+import { Td, TableField } from './TableBody'
 import TableRow from '../TableRow'
+import { extractNestedObject } from '../utils'
+
+export interface TableContentHorizontalProps {
+  data: object[]
+  dataKey: string
+  fields: TableField[]
+  rowHeight?: number
+  paddings: number
+}
 
 export default function TableContentHorizontal({
   data,
@@ -8,21 +16,28 @@ export default function TableContentHorizontal({
   fields,
   rowHeight,
   paddings,
-}: TableProps) {
+}: TableContentHorizontalProps) {
   return (
     <>
       {data.map((item) => {
         const dataList = fields.map(({ key, renderCell }) => (
           <Td
-            key={`${key}_${item.id ? item.id : JSON.stringify(item[key])}`}
+            key={`${key}_${
+              dataKey && extractNestedObject(item, dataKey)
+                ? extractNestedObject(item, dataKey)
+                : extractNestedObject(item, key)
+            }`}
             css={{
               padding: paddings,
             }}
           >
-            {renderCell ? renderCell(item) : item[key]}
+            {renderCell ? renderCell(item) : extractNestedObject(item, key)}
           </Td>
         ))
-        const itemKey = dataKey && item[dataKey] ? item[dataKey] : item[fields[0].key]
+        const itemKey =
+          dataKey && extractNestedObject(item, dataKey)
+            ? extractNestedObject(item, dataKey)
+            : extractNestedObject(item, fields[0].key)
 
         return (
           <TableRow height={rowHeight} key={`dataList_${itemKey}`}>

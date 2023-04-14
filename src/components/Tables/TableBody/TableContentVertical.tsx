@@ -1,6 +1,22 @@
-import { Td, TableContentVerticalProps } from './TableBody'
+import { Td, TableField } from './TableBody'
 import TableRow from '../TableRow'
 import TableHead from '../TableHead'
+import { extractNestedObject } from '../utils'
+import { SORT_ORDER } from '../Table'
+
+export interface TableContentVerticalProps {
+  data: object[]
+  dataKey: string
+  fields: TableField[]
+  rowHeight?: number
+  paddings: number
+  sortKey: {
+    key: string
+    order: SORT_ORDER
+  }
+  onSortClick: (key: string) => void
+  stickyHeader: boolean
+}
 
 export default function TableContentVertical({
   data,
@@ -17,12 +33,16 @@ export default function TableContentVertical({
       {fields.map(({ key, title, sortable, renderCell }) => {
         const dataList = data.map((item) => (
           <Td
-            key={`${key}_${dataKey && item[dataKey] ? item[dataKey] : JSON.stringify(item[key])}`}
+            key={`${key}_${
+              dataKey && extractNestedObject(item, dataKey)
+                ? extractNestedObject(item, dataKey)
+                : extractNestedObject(item, key)
+            }`}
             css={{
               padding: paddings,
             }}
           >
-            {renderCell ? renderCell(item) : item[key]}
+            {renderCell ? renderCell(item) : extractNestedObject(item, key)}
           </Td>
         ))
 
@@ -35,13 +55,13 @@ export default function TableContentVertical({
               sortable={sortable}
               paddings={paddings}
               {...(sortable && {
-                onSortClick: onSortClick,
+                onSortClick,
               })}
               {...(key === sortKey.key && {
                 sortOrder: sortKey.order,
               })}
             >
-              {title ? title : (key as string)}
+              {title || key}
             </TableHead>
             {dataList}
           </TableRow>
