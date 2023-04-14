@@ -2,7 +2,7 @@ import { createStitches, PropertyValue } from '@stitches/react'
 
 export const ROOT_FONT_SIZE = 16
 
-export const { styled, css } = createStitches({
+export const { styled, css, getCssText } = createStitches({
   utils: {
     px: (value: PropertyValue<'padding'>) => ({
       paddingLeft: value,

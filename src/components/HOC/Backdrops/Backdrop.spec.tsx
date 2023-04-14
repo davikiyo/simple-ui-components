@@ -37,4 +37,15 @@ describe('Backdrop HOC', () => {
     render(<WrappedComponent show />)
     expect(document.body.style.overflow).toBe('hidden')
   })
+
+  it('should set the scroll property', () => {
+    window.innerHeight = 90
+    document.body = Object.defineProperty(document.body, 'clientHeight', {
+      value: 100,
+      writable: true,
+    })
+    WrappedComponent = withBackDrop(TestComponent, { fixContent: true })
+    render(<WrappedComponent show />)
+    expect(document.body.style.overflow).toBe('scroll')
+  })
 })

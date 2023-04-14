@@ -4,8 +4,10 @@ import FocusTrap from './FocusTrap'
 
 describe('FocusTrap', () => {
   let children: JSX.Element
+  let active: boolean
 
   beforeEach(() => {
+    active = true
     children = (
       <>
         <button data-testid="focusable-1">Focusable1</button>
@@ -14,13 +16,14 @@ describe('FocusTrap', () => {
     )
   })
 
-  const initialize = () =>
-    render(
-      <>
-        <button data-testid="not-focusable">Not Focusable</button>
-        <FocusTrap active>{children}</FocusTrap>
-      </>
-    )
+  const TestComponent = () => (
+    <>
+      <button data-testid="not-focusable">Not Focusable</button>
+      <FocusTrap active={active}>{children}</FocusTrap>
+    </>
+  )
+
+  const initialize = () => render(<TestComponent />)
 
   it('should only focus on the wrapped children', async () => {
     initialize()
@@ -29,6 +32,12 @@ describe('FocusTrap', () => {
     expect(screen.getByTestId('focusable-1')).toHaveFocus()
 
     await userEvent.tab()
+    expect(screen.getByTestId('focusable-2')).toHaveFocus()
+
+    await userEvent.tab({ shift: true })
+    expect(screen.getByTestId('focusable-1')).toHaveFocus()
+
+    await userEvent.tab({ shift: true })
     expect(screen.getByTestId('focusable-2')).toHaveFocus()
 
     await userEvent.tab()

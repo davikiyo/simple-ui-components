@@ -1,8 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { TableField } from './models/table'
-import Table from './Table'
+import Table, { TableFieldType } from './Table'
 
 type TestDataType = {
   id: number
@@ -15,7 +14,7 @@ type TestDataType = {
 describe('Table component', () => {
   const onSortHandlerMock = jest.fn()
   let data: TestDataType[]
-  let fields: TableField<TestDataType>[]
+  let fields: TableFieldType<TestDataType>[]
   let vertical = false
 
   beforeEach(() => {
@@ -135,10 +134,17 @@ describe('Table component', () => {
   })
 
   it('should render a custom cell in the table with vertical headers', async () => {
-    fields[0].renderCell = () => 'TEST'
+    fields[0].renderCell = (item) => <button>{item.title}</button>
     vertical = true
     initialize()
 
-    expect(screen.getAllByText('TEST')).toHaveLength(data.length)
+    expect(screen.getByRole('button', { name: data[0].title })).toBeInTheDocument()
+  })
+
+  it('should render the key as a column header when there is no title', () => {
+    fields[0].title = undefined
+    vertical = true
+    initialize()
+    expect(screen.getByRole('columnheader', { name: fields[0].key })).toBeInTheDocument()
   })
 })

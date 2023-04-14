@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { useEffect, useState } from 'react'
 
 import { PureModal } from '../../src/components/Modals/Modal'
@@ -37,7 +37,7 @@ export const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit
   dictum. Ut nec mauris arcu. Ut consequat ac elit vel auctor. Suspendisse sodales velit
   dui, a ullamcorper urna.`
 
-export default {
+const meta: Meta<typeof Modal> = {
   component: PureModal,
   excludeStories: ['textData'],
   render: (args) => {
@@ -70,9 +70,13 @@ export default {
       </>
     )
   },
-} as ComponentMeta<typeof PureModal>
+}
 
-export const Normal: ComponentStoryObj<typeof Modal> = {
+export default meta
+
+type Story = StoryObj<typeof Modal>
+
+export const Normal: Story = {
   args: {
     width: 'calc(100% - 32px)',
     show: false,
@@ -88,7 +92,20 @@ export const Normal: ComponentStoryObj<typeof Modal> = {
   },
 }
 
-export const WithScrollableContent: ComponentStoryObj<typeof Modal> = {
+export const WithNoFocusableElement: Story = {
+  args: {
+    width: 'calc(100% - 32px)',
+    show: false,
+    ariaLabelledBy: 'title',
+    children: (
+      <>
+        <h1 id="title">TEST</h1>
+      </>
+    ),
+  },
+}
+
+export const WithScrollableContent: Story = {
   args: {
     ...Normal.args,
     ariaDescribedBy: 'description',

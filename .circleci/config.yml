@@ -6,7 +6,7 @@ orbs:
 executors:
   node-executor:
     docker:
-      - image: cimg/node:16.18
+      - image: cimg/node:18.6
     working_directory: ~/workspace
 
 jobs:
@@ -44,7 +44,7 @@ jobs:
 
       - run:
           name: Unit testing
-          command: yarn test:coverage --silent
+          command: yarn test:coverage --silent --ci --runInBand
 
       - codecov/upload:
           file: ./coverage/lcov.info

@@ -1,9 +1,8 @@
 import { styled } from 'styles'
 
-import { TableKeys } from '../models/table'
-import { TableProps, SortKeyType } from '../Table'
-import TableContentHorizontal from './TableContentHorizontal'
-import TableContentVertical from './TableContentVertical'
+import TableContentHorizontal, { TableContentHorizontalProps } from './TableContentHorizontal'
+import TableContentVertical, { TableContentVerticalProps } from './TableContentVertical'
+import { TableData } from '../models/table'
 
 export const Td = styled('td', {
   borderBottom: '1px solid #707070',
@@ -14,10 +13,15 @@ export const TBody = styled('tbody', {
   textAlign: 'center',
 })
 
-export interface TableContentVerticalProps extends TableProps {
-  paddings: number
-  onSortClick: (title: TableKeys) => void
-  sortKey: SortKeyType
+export interface TableField {
+  key: string
+  title?: string
+  sortable?: boolean
+  renderCell?: (data: TableData) => JSX.Element | string
+}
+
+export interface TableContentProps extends TableContentHorizontalProps, TableContentVerticalProps {
+  verticalHeader: boolean
 }
 
 export default function TableBody({
@@ -25,7 +29,7 @@ export default function TableBody({
   onSortClick,
   verticalHeader,
   ...tableProps
-}: TableContentVerticalProps) {
+}: TableContentProps) {
   return (
     <TBody>
       {verticalHeader ? (
