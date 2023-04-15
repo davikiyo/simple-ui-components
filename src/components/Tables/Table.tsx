@@ -13,12 +13,12 @@ export type SortKeyType = {
   order: SORT_ORDER
 }
 
-export interface TableFieldType<T extends Record<string, unknown>> extends TableField {
+export interface TableFieldType<T> extends TableField {
   key: DataKeyType<T>
   renderCell?: (data: TableData<T>) => JSX.Element | string
 }
 
-export interface TableProps<T extends Record<string, unknown>> {
+export interface TableProps<T> {
   /**
    * Overrides the style in the table container.
    */
@@ -178,7 +178,7 @@ export enum SORT_ORDER {
 }
 
 /** displays the given data in a styled table. */
-export default function Table<T extends Record<string, unknown>>({
+export default function Table<T>({
   className,
   css,
   tableCss,
@@ -210,7 +210,7 @@ export default function Table<T extends Record<string, unknown>>({
 
   useEffect(() => {
     if (sortKey.key && onSortRequest) onSortRequest(sortKey)
-  }, [sortKey, onSortRequest])
+  }, [sortKey])
 
   const onSortHandler = (title: string) => {
     const key = fields.find((field) => field.key === title || field.title === title)?.key
@@ -238,7 +238,8 @@ export default function Table<T extends Record<string, unknown>>({
             <TableRow height={rowHeight}>
               {fields.map(({ key, title, sortable }) => (
                 <TableHead
-                  key={key}
+                  // Assign key & title when there are duplicate keys
+                  key={`${key}_${title || ''}`}
                   sortable={sortable}
                   paddings={paddings}
                   stickyHeader={stickyHeader}

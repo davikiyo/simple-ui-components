@@ -20,9 +20,10 @@ export default function TableContentHorizontal({
   return (
     <>
       {data.map((item) => {
-        const dataList = fields.map(({ key, renderCell }) => (
+        const dataList = fields.map(({ key, title, renderCell }) => (
           <Td
-            key={`${key}_${
+            // Assign key & title when there are duplicate keys
+            key={`${key}_${title || ''}_${
               dataKey && extractNestedObject(item, dataKey)
                 ? extractNestedObject(item, dataKey)
                 : extractNestedObject(item, key)

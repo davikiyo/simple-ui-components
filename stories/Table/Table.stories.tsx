@@ -226,6 +226,13 @@ export const CustomCells: Story = {
           return <button>Action {data.title}</button>
         },
       },
+      {
+        key: 'id',
+        title: 'Delete',
+        renderCell: (data) => {
+          return <button>Delete {data.title}</button>
+        },
+      },
     ],
   },
 }
@@ -237,6 +244,7 @@ export const SortableWithHandler: Story = {
       {
         key: 'title',
         title: 'Title',
+        sortable: true,
       },
       {
         key: 'author',

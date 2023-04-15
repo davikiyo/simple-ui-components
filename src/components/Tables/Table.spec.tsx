@@ -3,12 +3,16 @@ import userEvent from '@testing-library/user-event'
 
 import Table, { TableFieldType } from './Table'
 
-type TestDataType = {
+interface TestDataType {
   id: number
   title: string
   author: string
   price: number
-  publisher: string
+  publisher: {
+    name: string
+    id: string
+  }
+  coAuthors?: string[]
 }
 
 describe('Table component', () => {
@@ -24,14 +28,21 @@ describe('Table component', () => {
         title: 'Title1',
         author: 'Author1',
         price: 10,
-        publisher: 'Publisher1',
+        publisher: {
+          id: 'p1',
+          name: 'Publisher1',
+        },
       },
       {
         id: 2,
         title: 'Title2',
         author: 'Author2',
         price: 9,
-        publisher: 'Publisher2',
+        publisher: {
+          id: 'p2',
+          name: 'Publisher2',
+        },
+        coAuthors: ['Author3', 'Author4'],
       },
     ]
     fields = [
@@ -48,8 +59,12 @@ describe('Table component', () => {
         title: 'Price',
       },
       {
-        key: 'publisher',
+        key: 'publisher.name',
         title: 'Publisher',
+      },
+      {
+        key: 'coAuthors',
+        title: 'Co-Authors',
       },
     ]
     vertical = false
@@ -88,7 +103,7 @@ describe('Table component', () => {
       expect(screen.getByText(item.title)).toBeInTheDocument()
       expect(screen.getByText(item.author)).toBeInTheDocument()
       expect(screen.getByText(item.price)).toBeInTheDocument()
-      expect(screen.getByText(item.publisher)).toBeInTheDocument()
+      expect(screen.getByText(item.publisher.name)).toBeInTheDocument()
     })
   })
 

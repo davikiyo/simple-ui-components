@@ -33,7 +33,8 @@ export default function TableContentVertical({
       {fields.map(({ key, title, sortable, renderCell }) => {
         const dataList = data.map((item) => (
           <Td
-            key={`${key}_${
+            // Assign key & title when there are duplicate keys
+            key={`${key}_${title || ''}_${
               dataKey && extractNestedObject(item, dataKey)
                 ? extractNestedObject(item, dataKey)
                 : extractNestedObject(item, key)
@@ -51,7 +52,8 @@ export default function TableContentVertical({
             <TableHead
               verticalHeader
               stickyHeader={stickyHeader}
-              key={key}
+              // Assign key & title when there are duplicate keys
+              key={`${key}_${title || ''}`}
               sortable={sortable}
               paddings={paddings}
               {...(sortable && {
