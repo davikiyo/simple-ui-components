@@ -38,6 +38,10 @@ export const { styled, css, getCssText } = createStitches({
       green: '#4caf50',
       purple: '#9c27b0',
       secondary: '#03a9f4',
+      error: '#f44336',
+      success: '#3fb556',
+      info: '#03a9f4',
+      warning: '#ff9300',
     },
     fonts: {
       main: 'Arial, Helvetica, sans-serif',

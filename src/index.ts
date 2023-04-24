@@ -9,5 +9,6 @@ export * from './components/AppBars'
 export * from './components/Modals'
 export * from './components/Drawers'
 export * from './components/Lists'
+export * from './components/Alerts'
 
 export { getCssText } from './styles'
