@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import Table, { TableFieldType } from './Table'
@@ -20,6 +20,10 @@ describe('Table component', () => {
   let data: TestDataType[]
   let fields: TableFieldType<TestDataType>[]
   let vertical = false
+  let hoverable = false
+  let renderRowDetail: ((item: TestDataType) => JSX.Element) | undefined
+  let selectedRows: number[]
+  const onRowClickHandler = jest.fn()
 
   beforeEach(() => {
     data = [
@@ -68,6 +72,11 @@ describe('Table component', () => {
       },
     ]
     vertical = false
+    hoverable = false
+    selectedRows = []
+    renderRowDetail
+    renderRowDetail = undefined
+    onRowClickHandler.mockClear()
     onSortHandlerMock.mockClear()
   })
 
@@ -78,6 +87,10 @@ describe('Table component', () => {
         fields={fields}
         onSortRequest={onSortHandlerMock}
         verticalHeader={vertical}
+        onRowClick={onRowClickHandler}
+        hoverable={hoverable}
+        selectedRows={selectedRows}
+        renderRowDetail={renderRowDetail}
       />
     )
 
@@ -161,5 +174,48 @@ describe('Table component', () => {
     vertical = true
     initialize()
     expect(screen.getByRole('columnheader', { name: fields[0].key })).toBeInTheDocument()
+  })
+
+  it('should render a table with hoverable rows', () => {
+    hoverable = true
+    initialize()
+    const tableRowGroups = screen.getAllByRole('rowgroup')
+    expect(within(tableRowGroups[1]).getAllByRole('button')).toHaveLength(data.length)
+  })
+
+  it('should render a table with hoverable rows', () => {
+    hoverable = true
+    initialize()
+    const tableRowGroups = screen.getAllByRole('rowgroup')
+    expect(within(tableRowGroups[1]).getAllByRole('button')).toHaveLength(data.length)
+  })
+
+  it('should trigger the onClick event when clicked on the selectable rows', async () => {
+    hoverable = true
+    initialize()
+    const tableRowGroups = screen.getAllByRole('rowgroup')
+    const tableRows = within(tableRowGroups[1]).getAllByRole('button')
+    await userEvent.click(tableRows[0])
+    expect(onRowClickHandler).toBeCalledWith(data[0].id, 0)
+  })
+
+  it(`should display the selected row's details`, () => {
+    selectedRows = [1]
+    // eslint-disable-next-line react/display-name
+    renderRowDetail = (item) => (
+      <>
+        <div data-testid={`publisher-id-${item.id}`}>
+          <span>Publisher&apos;s ID:</span>
+          <span>{item.publisher.id}</span>
+        </div>
+        <div data-testid={`publisher-name-${item.id}`}>
+          <span>Publisher&apos;s Name:</span>
+          <span>{item.publisher.name}</span>
+        </div>
+      </>
+    )
+    initialize()
+    expect(screen.getByTestId('publisher-id-1')).toBeInTheDocument()
+    expect(screen.getByTestId('publisher-name-1')).toBeInTheDocument()
   })
 })

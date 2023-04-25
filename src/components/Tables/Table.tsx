@@ -18,6 +18,8 @@ export interface TableFieldType<T> extends TableField {
   renderCell?: (data: TableData<T>) => JSX.Element | string
 }
 
+export type SelectedRowKey = string | number
+
 export interface TableProps<T> {
   /**
    * Overrides the style in the table container.
@@ -143,6 +145,42 @@ export interface TableProps<T> {
    * Display the header in a vertical manner.
    */
   verticalHeader?: boolean
+
+  /**
+   * Displays the hover effect if it's true.
+   */
+  hoverable?: boolean
+
+  /**
+   * Handles the onClick event on the row.
+   *
+   * **Note:**
+   * Not supported in the table with vertical headers.
+   *
+   * @param itemKey - The selected row's key.
+   * @param index - The selected index.
+   */
+  onRowClick?: (itemKey: SelectedRowKey, index: number) => void
+
+  /**
+   * List of selected row's keys.
+   *
+   * **Note:**
+   * Not supported in the table with vertical headers.
+   *
+   */
+  selectedRows?: SelectedRowKey[]
+
+  /**
+   * Renders row's detail.
+   *
+   * **Note:**
+   * Not supported in the table with vertical headers.
+   *
+   * @param item - The row item.
+   * @returns {JSX.Element} - The detail element.
+   */
+  renderRowDetail?: (item: T) => JSX.Element
 }
 
 const Container = styled('div', {
@@ -190,8 +228,12 @@ export default function Table<T>({
   width,
   onSortRequest,
   paddings = 16,
+  renderRowDetail,
+  onRowClick,
+  selectedRows = [],
   stickyHeader = false,
   verticalHeader = false,
+  hoverable = false,
 }: TableProps<T>) {
   const [sortKey, setSortKey] = useState<SortKeyType>({
     key: '',
@@ -266,6 +308,10 @@ export default function Table<T>({
           stickyHeader={stickyHeader}
           sortKey={sortKey}
           onSortClick={onSortHandler}
+          hoverable={hoverable}
+          onRowClick={onRowClick}
+          selectedRows={selectedRows}
+          renderRowDetail={renderRowDetail}
         />
       </TableContainer>
     </Container>

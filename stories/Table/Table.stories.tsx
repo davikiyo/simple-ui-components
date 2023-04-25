@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { Table, TableProps, Card, Pagination, IconButton } from 'components'
+import { Table, TableProps, Card, Pagination, IconButton, SelectedRowKey } from 'components'
 import { useState } from 'react'
 import { Paginator } from 'components'
 
@@ -382,4 +382,102 @@ export const Integrated: IntegratedStory = {
     ],
   },
   render: (args) => <IntegratedComponent {...args} />,
+}
+
+export const SelectableRows: Story = {
+  args: {
+    ...NonSortable.args,
+    fields: [
+      {
+        key: 'title',
+        title: 'Title',
+      },
+      {
+        key: 'author',
+        title: 'Author',
+      },
+      {
+        key: 'price',
+        title: 'Price',
+      },
+      {
+        key: 'publisher.name',
+        title: 'Publisher',
+      },
+      {
+        key: 'id',
+        title: 'Action',
+        renderCell: (data) => {
+          return (
+            <button
+              onClick={() => {
+                console.log(data.title)
+              }}
+            >
+              Action {data.title}
+            </button>
+          )
+        },
+      },
+    ],
+    hoverable: true,
+  },
+  render: (args) => {
+    const [selectedRows, setSelectedRows] = useState<SelectedRowKey[]>([])
+    const onRowClickHandler = (key: SelectedRowKey) => {
+      if (selectedRows.some((k) => k === key)) {
+        setSelectedRows(selectedRows.filter((k) => k !== key))
+      } else {
+        setSelectedRows([...selectedRows, key])
+      }
+    }
+
+    return <Table {...args} selectedRows={selectedRows} onRowClick={onRowClickHandler} />
+  },
+}
+
+export const CollapsibleTable: Story = {
+  args: {
+    ...NonSortable.args,
+    fields: [
+      {
+        key: 'title',
+        title: 'Title',
+      },
+      {
+        key: 'author',
+        title: 'Author',
+      },
+      {
+        key: 'price',
+        title: 'Price',
+      },
+    ],
+    hoverable: true,
+    selectedRows: [1],
+    renderRowDetail: (item) => (
+      <>
+        <div>
+          <span>Publisher&apos;s ID: </span>
+          <span>{item.publisher.publisherId}</span>
+        </div>
+        <div>
+          <span>Publisher&apos;s Name: </span>
+          <span>{item.publisher.name}</span>
+        </div>
+      </>
+    ),
+  },
+  render: (args) => {
+    const [selectedRows, setSelectedRows] = useState<SelectedRowKey[]>([])
+    const onRowClickHandler = (key: SelectedRowKey) => {
+      if (selectedRows.some((k) => k === key)) {
+        setSelectedRows(selectedRows.filter((k) => k !== key))
+      } else {
+        setSelectedRows([key])
+      }
+    }
+
+    return <Table {...args} selectedRows={selectedRows} onRowClick={onRowClickHandler} />
+  },
 }

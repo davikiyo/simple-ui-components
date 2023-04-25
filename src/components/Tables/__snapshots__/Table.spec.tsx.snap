@@ -20,12 +20,12 @@ exports[`Table component should render a table with vertical headers 1`] = `
             Title
           </th>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Title1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Title2
           </td>
@@ -39,12 +39,12 @@ exports[`Table component should render a table with vertical headers 1`] = `
             Author
           </th>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Author1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Author2
           </td>
@@ -58,12 +58,12 @@ exports[`Table component should render a table with vertical headers 1`] = `
             Price
           </th>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             10
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             9
           </td>
@@ -77,12 +77,12 @@ exports[`Table component should render a table with vertical headers 1`] = `
             Publisher
           </th>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Publisher1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Publisher2
           </td>
@@ -96,10 +96,10 @@ exports[`Table component should render a table with vertical headers 1`] = `
             Co-Authors
           </th>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           />
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             ["Author3","Author4"]
           </td>
@@ -196,27 +196,27 @@ exports[`Table component should sort the field when a handler is not provided 1`
           class="c-PJLV c-PJLV-iPJLV-css"
         >
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Title2
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Author2
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             9
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Publisher2
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             ["Author3","Author4"]
           </td>
@@ -225,27 +225,27 @@ exports[`Table component should sort the field when a handler is not provided 1`
           class="c-PJLV c-PJLV-iPJLV-css"
         >
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Title1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Author1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             10
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           >
             Publisher1
           </td>
           <td
-            class="c-fppYJE c-fppYJE-ikYLxwh-css"
+            class="c-fvsbLx c-fvsbLx-ikYLxwh-css"
           />
         </tr>
       </tbody>
