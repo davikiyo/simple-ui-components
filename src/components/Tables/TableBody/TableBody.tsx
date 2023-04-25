@@ -5,7 +5,7 @@ import TableContentVertical, { TableContentVerticalProps } from './TableContentV
 import { TableData } from '../models/table'
 
 export const Td = styled('td', {
-  borderBottom: '1px solid #707070',
+  borderBottom: '1px solid $darkGray',
 })
 
 export const TBody = styled('tbody', {
@@ -20,16 +20,18 @@ export interface TableField {
   renderCell?: (data: TableData) => JSX.Element | string
 }
 
-export interface TableContentProps extends TableContentHorizontalProps, TableContentVerticalProps {
+export interface TableContentProps<T>
+  extends TableContentHorizontalProps<T>,
+    TableContentVerticalProps<T> {
   verticalHeader: boolean
 }
 
-export default function TableBody({
+export default function TableBody<T>({
   sortKey,
   onSortClick,
   verticalHeader,
   ...tableProps
-}: TableContentProps) {
+}: TableContentProps<T>) {
   return (
     <TBody>
       {verticalHeader ? (

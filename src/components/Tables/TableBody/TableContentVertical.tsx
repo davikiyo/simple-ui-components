@@ -4,8 +4,8 @@ import TableHead from '../TableHead'
 import { extractNestedObject } from '../utils'
 import { SORT_ORDER } from '../Table'
 
-export interface TableContentVerticalProps {
-  data: object[]
+export interface TableContentVerticalProps<T> {
+  data: T[]
   dataKey: string
   fields: TableField[]
   rowHeight?: number
@@ -18,7 +18,7 @@ export interface TableContentVerticalProps {
   stickyHeader: boolean
 }
 
-export default function TableContentVertical({
+export default function TableContentVertical<T>({
   data,
   dataKey,
   fields,
@@ -27,7 +27,7 @@ export default function TableContentVertical({
   sortKey,
   stickyHeader,
   onSortClick,
-}: TableContentVerticalProps) {
+}: TableContentVerticalProps<T>) {
   return (
     <>
       {fields.map(({ key, title, sortable, renderCell }) => {

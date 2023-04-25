@@ -28,6 +28,7 @@ yarn add @davikiyo/simple-ui-components
 
 The available components are as follows:
 
+- Alert
 - AppBar
 - Card
 - Drawer
@@ -40,6 +41,7 @@ The available components are as follows:
   - ListItem
 - Modal
 - Pagination
+- Tab
 - Table
 - UI
   - Button
