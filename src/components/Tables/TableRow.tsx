@@ -45,7 +45,6 @@ export default function TableRow({
       {...(hoverable && { role: 'button', tabIndex: -1, hoverable })}
       {...(onRowClick && {
         onClick: (event) => {
-          console.log((event.target as Element).nodeName)
           if (
             (event.target as Element).nodeName !== 'INPUT' &&
             (event.target as Element).nodeName !== 'BUTTON'

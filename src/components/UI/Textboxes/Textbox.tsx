@@ -176,7 +176,7 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   // Set isEmpty to true if the given value is empty, otherwise set to false.
   // It is only validated when the value prop is provided.
   useEffect(() => {
-    value != undefined && defaultValue != undefined && setEmpty(!value && !defaultValue)
+    if (value != undefined || defaultValue != undefined) setEmpty(!value && !defaultValue)
   }, [value, defaultValue])
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
