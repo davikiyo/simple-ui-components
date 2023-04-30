@@ -35,6 +35,7 @@ const TabButton = styled('button', {
   backgroundColor: '#fff',
   border: 'solid 1px $lightGraySecondary',
   cursor: 'pointer',
+  color: '#000',
   '&:disabled': {
     backgroundColor: '$lightGraySecondary',
     color: 'inherit',

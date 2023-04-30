@@ -401,8 +401,14 @@ export const SelectableRows: Story = {
         title: 'Price',
       },
       {
-        key: 'publisher.name',
+        key: 'publisher.publisherId',
         title: 'Publisher',
+        renderCell: (item) => (
+          <div style={{ textAlign: 'left' }}>
+            <div>Publisher ID: {item.publisher.publisherId}</div>
+            <div>Publisher Name: {item.publisher.name}</div>
+          </div>
+        ),
       },
       {
         key: 'id',

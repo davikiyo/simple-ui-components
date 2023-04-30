@@ -16,7 +16,6 @@ const Tr = styled('tr', {
     hoverable: {
       true: {
         '&:hover': {
-          backgroundColor: '$lightGraySecondary',
           cursor: 'pointer',
         },
       },
@@ -46,9 +45,10 @@ export default function TableRow({
       {...(hoverable && { role: 'button', tabIndex: -1, hoverable })}
       {...(onRowClick && {
         onClick: (event) => {
+          console.log((event.target as Element).nodeName)
           if (
-            (event.target as Element).nodeName === 'TD' ||
-            (event.target as Element).nodeName === 'TR'
+            (event.target as Element).nodeName !== 'INPUT' &&
+            (event.target as Element).nodeName !== 'BUTTON'
           ) {
             onRowClick(itemKey!, index!)
           }
