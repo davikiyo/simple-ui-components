@@ -14,6 +14,7 @@ type Story = StoryObj<typeof Textbox>
 export const Default: Story = {
   args: {
     onChange: undefined,
+    name: 'test',
   },
 }
 

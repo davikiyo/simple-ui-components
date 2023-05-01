@@ -156,6 +156,50 @@ export interface TableProps<T> {
    *
    * **Note:**
    * Not supported in the table with vertical headers.
+   * Elements inside the cell will propagate to the parent by default (except `input` & `button`).
+   * Therefore, you must call `event.stopPropagation()` on the element if you want to stop this behavior.
+   *
+   * @example
+   * An example using IconButton.
+   * ```
+   * const data = [
+   *  {
+   *    id: "C1",
+   *    company: {
+   *      name: "Example"
+   *      symbol: "EXAM"
+   *    }
+   *  }
+   * ]
+   * const fields = [
+   *  {
+   *    key: 'title',
+   *    title: 'Title'
+   *  },
+   *  {
+   *    key: 'id',
+   *    title: 'Edit',
+   *    renderCell: (data) => (
+   *        <IconButton
+   *          icon="pencil"
+   *          onClick={(e) => {
+   *            e.stopPropagation()
+   *            //...
+   *          }}
+   *          rounded
+   *        />
+   *     )
+   *   }
+   * ]
+   *  <Table
+   *    data={data}
+   *    fields={fields}
+   *    onRowClick={(itemKey, index) => {
+   *      //...
+   *    }}
+   *    //...
+   *  />
+   * ```
    *
    * @param itemKey - The selected row's key.
    * @param index - The selected index.

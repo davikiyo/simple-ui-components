@@ -425,6 +425,22 @@ export const SelectableRows: Story = {
           )
         },
       },
+      {
+        key: 'id',
+        title: 'Edit',
+        renderCell: (data) => {
+          return (
+            <IconButton
+              icon="pencil"
+              onClick={(e) => {
+                e.stopPropagation()
+                console.log(data.id)
+              }}
+              rounded
+            />
+          )
+        },
+      },
     ],
     hoverable: true,
   },
