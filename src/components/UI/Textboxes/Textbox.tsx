@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  ComponentPropsWithRef,
-  forwardRef,
-  useEffect,
-  useState,
-} from 'react'
+import { ChangeEventHandler, ComponentPropsWithRef, forwardRef } from 'react'
 
 import { CSS, styled } from 'styles'
 
