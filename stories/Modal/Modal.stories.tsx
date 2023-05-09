@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react'
 import { useEffect, useState } from 'react'
 
 import { PureModal } from '../../src/components/Modals/Modal'
-import { Button, Modal, Textbox } from 'components'
+import { Button, IconButton, Modal, Textbox } from 'components'
 
 export const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nunc, ultricies a
   lobortis non, volutpat vel libero. Aliquam erat volutpat. Pellentesque habitant morbi
@@ -83,7 +83,15 @@ export const Normal: Story = {
     ariaLabelledBy: 'title',
     children: (
       <>
-        <h1 id="title">TEST</h1>
+        <div>
+          <h1 id="title">TEST</h1>
+          <IconButton
+            css={{ position: 'absolute', top: '16px', right: '16px' }}
+            tabIndex={-1}
+            icon="close"
+            ariaLabel="Close"
+          />
+        </div>
         <Textbox label="TEST" />
         <br />
         <Button>TEST</Button>

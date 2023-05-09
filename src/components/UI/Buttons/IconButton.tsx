@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { styled, CSS } from 'styles'
 import { IconName } from 'types/Icon'
 import { Icon } from 'components'
@@ -97,8 +98,10 @@ export interface IconButtonProps {
 
   /**
    * Handles the click event.
+   *
+   * @param event - The button event.
    */
-  onClick?: () => void
+  onClick?: MouseEventHandler<HTMLButtonElement>
 
   /**
    * Displays the button in rounded style.
@@ -109,6 +112,11 @@ export interface IconButtonProps {
    * Defines the button type.
    */
   type?: BUTTON_TYPE
+
+  /**
+   * Specifies the tab index for the element.
+   */
+  tabIndex?: number
 }
 
 /**
@@ -123,6 +131,7 @@ export default function IconButton({
   height = 16,
   width = 16,
   onClick,
+  tabIndex,
   rounded = false,
   type = 'button',
   disabled = false,
@@ -135,6 +144,7 @@ export default function IconButton({
       type={type}
       onClick={onClick}
       rounded={rounded}
+      tabIndex={tabIndex}
       disabled={disabled}
     >
       <Icon name={icon} color={color} height={height} width={width} />

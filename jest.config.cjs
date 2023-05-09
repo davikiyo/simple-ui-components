@@ -14,9 +14,15 @@ module.exports = {
   moduleFileExtensions: ['ts', 'js', 'tsx', 'jsx'],
   transform: {
     '^.+\\.[jt]sx?$': [
-      'ts-jest',
+      '@swc/jest',
       {
-        tsconfig: './tsconfig.json',
+        jsc: {
+          transform: {
+            react: {
+              runtime: 'automatic',
+            },
+          },
+        },
       },
     ],
   },
