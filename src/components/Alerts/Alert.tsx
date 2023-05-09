@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { styled } from 'styles'
+import { CSS, styled } from 'styles'
 import { Icon } from '../Icons'
 
 export type ALERT_VARIANTS = 'error' | 'info' | 'success' | 'warning'
@@ -29,6 +29,16 @@ export interface AlertProps {
    * Sets the offset on top.
    */
   top?: string | number
+
+  /**
+   * Sets the z-index for the element.
+   */
+  zIndex?: number
+
+  /**
+   * Overrides the style.
+   */
+  css?: CSS
 }
 
 const AlertContainer = styled('div', {
@@ -120,14 +130,16 @@ const ChildContainer = styled('span', {
  * displays an alert component.
  */
 export default function Alert({
-  variant,
-  children,
-  icon = <Icon name={variant} />,
   action,
+  children,
+  css,
+  variant,
+  icon = <Icon name={variant} />,
   top = 0,
+  zIndex = 998,
 }: AlertProps) {
   return (
-    <AlertContainer role="alert" variant={variant} css={{ top }}>
+    <AlertContainer role="alert" variant={variant} css={{ ...css, top, zIndex }}>
       <Background variant={variant} />
       <Content>
         {icon && <IconContainer>{icon}</IconContainer>}
