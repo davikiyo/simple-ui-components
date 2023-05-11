@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react-swc'
 import dts from 'vite-plugin-dts'
 import svgr from 'vite-plugin-svgr'
 
@@ -18,7 +18,8 @@ export default defineConfig(() => {
       lib: {
         entry: resolve(__dirname, 'src/index.ts'),
         name: 'SimpleUIComponents',
-        fileName: (format) => `index.${format}.js`,
+        fileName: (format) =>
+          format === 'umd' || format === 'commonjs' ? `index.${format}.cjs` : `index.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react-dom', 'classnames', '@stitches/react'],

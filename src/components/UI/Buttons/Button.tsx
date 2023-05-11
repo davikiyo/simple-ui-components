@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { styled, CSS } from 'styles'
 
 const StyledButton = styled('button', {
@@ -69,8 +70,10 @@ export interface ButtonProps {
 
   /**
    * Handles the click event.
+   *
+   * @param event - The button event.
    */
-  onClick?: () => void
+  onClick?: MouseEventHandler<HTMLButtonElement>
 
   /**
    * Displays the button in outlined style.
@@ -91,6 +94,11 @@ export interface ButtonProps {
    * Disables the button.
    */
   disabled?: boolean
+
+  /**
+   * Specifies the tab index for the element.
+   */
+  tabIndex?: number
 }
 
 /**
@@ -101,13 +109,15 @@ export default function Button({
   className,
   children,
   onClick,
-  outlined = false,
-  rounded = false,
+  tabIndex,
   type,
   disabled = false,
+  outlined = false,
+  rounded = false,
 }: ButtonProps) {
   return (
     <StyledButton
+      tabIndex={tabIndex}
       css={css}
       className={className}
       type={type}

@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react'
 import { styled, CSS } from 'styles'
 import { IconName } from 'types/Icon'
 import { Icon } from 'components'
@@ -14,6 +15,7 @@ const ButtonContainer = styled('button', {
   backgroundColor: 'transparent',
   transition: 'all .2s ease-in',
   outline: 'none',
+  cursor: 'pointer',
   '@bp3': {
     '&:hover, &:focus-visible': {
       filter: 'drop-shadow(2px 2px 1px #707070)',
@@ -25,6 +27,7 @@ const ButtonContainer = styled('button', {
   },
   '&:disabled': {
     filter: 'none',
+    cursor: 'default',
   },
   variants: {
     rounded: {
@@ -95,8 +98,10 @@ export interface IconButtonProps {
 
   /**
    * Handles the click event.
+   *
+   * @param event - The button event.
    */
-  onClick?: () => void
+  onClick?: MouseEventHandler<HTMLButtonElement>
 
   /**
    * Displays the button in rounded style.
@@ -107,6 +112,11 @@ export interface IconButtonProps {
    * Defines the button type.
    */
   type?: BUTTON_TYPE
+
+  /**
+   * Specifies the tab index for the element.
+   */
+  tabIndex?: number
 }
 
 /**
@@ -121,6 +131,7 @@ export default function IconButton({
   height = 16,
   width = 16,
   onClick,
+  tabIndex,
   rounded = false,
   type = 'button',
   disabled = false,
@@ -133,6 +144,7 @@ export default function IconButton({
       type={type}
       onClick={onClick}
       rounded={rounded}
+      tabIndex={tabIndex}
       disabled={disabled}
     >
       <Icon name={icon} color={color} height={height} width={width} />

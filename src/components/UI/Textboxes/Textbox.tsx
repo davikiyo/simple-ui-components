@@ -1,11 +1,4 @@
-import {
-  ChangeEvent,
-  ChangeEventHandler,
-  ComponentPropsWithRef,
-  forwardRef,
-  useEffect,
-  useState,
-} from 'react'
+import { ChangeEventHandler, ComponentPropsWithRef, forwardRef } from 'react'
 
 import { CSS, styled } from 'styles'
 
@@ -59,6 +52,10 @@ const StyledInput = styled('input', {
     top: '0px',
     transform: 'translate(-10%, -50%) scale(0.8)',
   },
+  '&:not(:placeholder-shown) + span': {
+    top: '0px',
+    transform: 'translate(-10%, -50%) scale(0.8)',
+  },
   '&:disabled': {
     color: '$darkGray',
     backgroundColor: '$lightGray',
@@ -92,12 +89,6 @@ const LabelText = styled('span', {
     zIndex: -1,
   },
   variants: {
-    notEmpty: {
-      true: {
-        top: '0px',
-        transform: 'translate(-10%, -50%) scale(0.8)',
-      },
-    },
     disabled: {
       true: {
         color: '$darkGray',
@@ -170,20 +161,7 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
   }: TextboxProps,
   ref
 ) {
-  const { disabled, name, value } = rest
-  const [isEmpty, setEmpty] = useState(!value)
-
-  // Set isEmpty to true if the given value is empty, otherwise set to false.
-  // It is only validated when the value prop is provided.
-  useEffect(() => {
-    value != undefined && setEmpty(!value)
-  }, [value])
-
-  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // This validation is required for the uncontrolled textbox.
-    setEmpty(!e.target.value)
-    onChange && onChange(e)
-  }
+  const { disabled, name, value, defaultValue, placeholder } = rest
 
   return (
     <InputContainer className={className} block={block}>
@@ -191,16 +169,16 @@ const Textbox = forwardRef<HTMLInputElement, TextboxProps>(function (
         <StyledInput
           {...rest}
           aria-describedby={`${name}_error`}
+          placeholder={placeholder || ' '}
           block={block}
           css={css}
-          onChange={handleOnChange}
+          onChange={onChange}
           ref={ref}
           type={number ? 'number' : 'text'}
+          defaultValue={defaultValue}
           value={value}
         />
-        <LabelText notEmpty={!isEmpty} disabled={disabled}>
-          {label}
-        </LabelText>
+        <LabelText disabled={disabled}>{label}</LabelText>
       </StyledLabel>
       {typeof error === 'string' && error && <Feedback id={`${name}_error`}>{error}</Feedback>}
     </InputContainer>

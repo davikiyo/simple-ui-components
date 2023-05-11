@@ -1,10 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react'
-import { useEffect, useState } from 'react'
+import { Alert, AppBar, IconButton } from 'components'
 
-import { PureModal } from '../../src/components/Modals/Modal'
-import { Button, IconButton, Modal, Textbox } from 'components'
-
-export const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nunc, ultricies a
+const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nunc, ultricies a
   lobortis non, volutpat vel libero. Aliquam erat volutpat. Pellentesque habitant morbi
   tristique senectus et netus et malesuada fames ac turpis egestas. Etiam ultricies justo
   eget ligula aliquam rhoncus. Donec arcu ex, dictum quis sapien sed, pulvinar malesuada
@@ -37,18 +34,12 @@ export const textData = `Lorem ipsum dolor sit amet, consectetur adipiscing elit
   dictum. Ut nec mauris arcu. Ut consequat ac elit vel auctor. Suspendisse sodales velit
   dui, a ullamcorper urna.`
 
-const meta: Meta<typeof Modal> = {
-  component: PureModal,
-  excludeStories: ['textData'],
+const meta: Meta<typeof Alert> = {
+  component: Alert,
   render: (args) => {
-    const [show, setShow] = useState(args.show)
-    useEffect(() => {
-      setShow(args.show)
-    }, [args.show])
-
     return (
       <>
-        <Modal {...args} show={show} onClose={() => setShow(false)} />
+        <Alert {...args} />
         <div
           style={{
             display: 'flex',
@@ -58,13 +49,74 @@ const meta: Meta<typeof Modal> = {
             fontSize: '18px',
           }}
         >
-          <Button
-            css={{ position: 'fixed', top: '50px', left: '50%', transform: 'translateX(-50%)' }}
-            onClick={() => setShow(true)}
-            rounded
-          >
-            Open Modal
-          </Button>
+          <p style={{ width: '375px', padding: '0 16px', boxSizing: 'border-box' }}>{textData}</p>
+        </div>
+      </>
+    )
+  },
+  parameters: {
+    layout: 'fullscreen',
+  },
+}
+
+export default meta
+
+type Story = StoryObj<typeof Alert>
+
+export const Error: Story = {
+  args: {
+    variant: 'error',
+    children: 'An error occurred.',
+  },
+}
+
+export const Info: Story = {
+  args: {
+    variant: 'info',
+    children: 'You have a notification.',
+  },
+}
+
+export const Success: Story = {
+  args: {
+    variant: 'success',
+    children: 'Successfully saved.',
+  },
+}
+
+export const Warning: Story = {
+  args: {
+    variant: 'warning',
+    children: 'There is a warning.',
+  },
+}
+
+export const WithActionButton: Story = {
+  args: {
+    ...Error.args,
+    action: <IconButton icon="close" />,
+  },
+}
+
+export const WithFixedHeader: Story = {
+  args: {
+    ...Error.args,
+    top: 60,
+  },
+  render: (args) => {
+    return (
+      <>
+        <AppBar sticky>TEST</AppBar>
+        <Alert {...args} />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '18px',
+          }}
+        >
           <p style={{ width: '375px', padding: '0 16px', boxSizing: 'border-box' }}>{textData}</p>
         </div>
       </>
@@ -72,58 +124,23 @@ const meta: Meta<typeof Modal> = {
   },
 }
 
-export default meta
-
-type Story = StoryObj<typeof Modal>
-
-export const Normal: Story = {
+export const LongText: Story = {
   args: {
-    width: 'calc(100% - 32px)',
-    show: false,
-    ariaLabelledBy: 'title',
-    children: (
-      <>
-        <div>
-          <h1 id="title">TEST</h1>
-          <IconButton
-            css={{ position: 'absolute', top: '16px', right: '16px' }}
-            tabIndex={-1}
-            icon="close"
-            ariaLabel="Close"
-          />
-        </div>
-        <Textbox label="TEST" />
-        <br />
-        <Button>TEST</Button>
-      </>
-    ),
-  },
-}
-
-export const WithNoFocusableElement: Story = {
-  args: {
-    width: 'calc(100% - 32px)',
-    show: false,
-    ariaLabelledBy: 'title',
-    children: (
-      <>
-        <h1 id="title">TEST</h1>
-      </>
-    ),
-  },
-}
-
-export const WithScrollableContent: Story = {
-  args: {
-    ...Normal.args,
-    ariaDescribedBy: 'description',
-    children: (
-      <>
-        <h1 id="title">TEST</h1>
-        <p tabIndex={0} id="description" style={{ width: '100%', overflowY: 'auto' }}>
-          {textData}
-        </p>
-      </>
-    ),
+    ...Error.args,
+    action: <IconButton icon="close" />,
+    children: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nunc, ultricies a
+    lobortis non, volutpat vel libero. Aliquam erat volutpat. Pellentesque habitant morbi
+    tristique senectus et netus et malesuada fames ac turpis egestas. Etiam ultricies justo
+    eget ligula aliquam rhoncus. Donec arcu ex, dictum quis sapien sed, pulvinar malesuada
+    nibh. Pellentesque lacinia, nulla non tristique congue, tortor velit porttitor ipsum, et
+    accumsan diam leo non neque. Integer consequat feugiat ante non posuere. Curabitur eu
+    nunc mollis nisi pharetra venenatis. Cras odio ex, pellentesque nec ornare vitae, congue
+    in turpis. Pellentesque ligula quam, convallis quis diam a, blandit suscipit nunc.
+    Quisque sed enim lacinia turpis eleifend ultrices. Sed bibendum viverra ipsum, eget
+    commodo mi mattis at. Fusce eget blandit lectus, tristique volutpat nibh. Aliquam rutrum
+    feugiat ex et ullamcorper. Duis hendrerit, diam ut ultrices tempus, dui massa convallis
+    odio, eget lobortis urna dolor in elit. Sed lacinia quam eros, non fermentum nibh
+    pellentesque eu. Nulla placerat at dolor eget ullamcorper. Proin vitae augue lorem. In
+    vehicula congue porttitor. Vestibulum at dictum nunc. Pellentesque a porttitor diam.`,
   },
 }

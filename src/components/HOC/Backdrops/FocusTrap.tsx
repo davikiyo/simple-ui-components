@@ -56,10 +56,8 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
         eventListener = (event) => {
           if (isNotTabKey(event)) return
 
-          if (document.activeElement !== ref.current) {
-            ref?.current?.focus()
-            event.preventDefault()
-          }
+          ref?.current?.focus()
+          event.preventDefault()
         }
         ref.current.addEventListener('keydown', eventListener)
       }
@@ -71,7 +69,7 @@ export default function FocusTrap({ active, children }: FocusTrapProps) {
   }, [active])
 
   return (
-    <div ref={ref} tabIndex={0} style={{ outline: 'none' }}>
+    <div ref={ref} tabIndex={0} style={{ outline: 'none' }} data-testid="focus-trap">
       {children}
     </div>
   )
