@@ -15,11 +15,10 @@ const DrawerCard = styled(Card, {
   zIndex: 10000,
   transitionProperty: 'transform, visibility',
   transitionDuration: '.3s',
-  transitionTimingFunction: 'ease-in',
+  transitionTimingFunction: 'cubic-bezier(.1,1,.8,1)',
 
   '&.hidden': {
     visibility: 'hidden',
-    transitionTimingFunction: 'ease-out',
   },
   variants: {
     persist: {
@@ -54,14 +53,12 @@ export function PureDrawer({
   persist = false,
   width = '240px',
 }: DrawerProps) {
-  const drawerCardClasses = cx({
-    hidden: !show,
-  })
-
   return (
     <DrawerCard
       role="navigation"
-      className={drawerCardClasses}
+      className={cx({
+        hidden: !show,
+      })}
       css={{
         width,
         '&.hidden': {
