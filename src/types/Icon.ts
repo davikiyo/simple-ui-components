@@ -9,6 +9,7 @@ export const ICON_NAMES = [
   'info',
   'logout',
   'menu',
+  'notification',
   'pencil',
   'plus-circle',
   'sorting-arrow-up',
