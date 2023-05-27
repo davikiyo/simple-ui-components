@@ -20,7 +20,7 @@ export interface TableContentHorizontalProps<T> {
 const TableDetail = styled('td', {
   borderBottom: '1px solid $darkGray',
   textAlign: 'start',
-  transition: 'all .2s ease-out',
+  transition: 'all .2s ease-in-out',
   variants: {
     isHidden: {
       true: {
@@ -34,7 +34,7 @@ const TableDetail = styled('td', {
 const TableDetailContainer = styled('div', {
   maxHeight: 0,
   overflow: 'hidden',
-  transition: 'all .2s cubic-bezier(.1,1,.8,1)',
+  transition: 'all .2s ease-in-out',
   variants: {
     show: {
       true: {

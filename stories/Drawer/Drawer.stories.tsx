@@ -33,7 +33,7 @@ export const Normal: ComponentStoryObj<typeof PureDrawer> = {
           </div>
         </Drawer>
         <AppBar sticky>
-          {!show && <IconButton icon="menu" onClick={() => setShow(true)} rounded />}
+          {!show && <IconButton icon="menu" onClick={() => setShow(true)} />}
           <div style={{ fontSize: '26px', marginLeft: '16px' }}>TEST</div>
         </AppBar>
         <div

@@ -74,7 +74,7 @@ const LabelText = styled('span', {
   left: '8px',
   top: '50%',
   transform: 'translateY(-50%)',
-  transition: 'all .15s cubic-bezier(.1,1,.8,1)',
+  transition: 'all .1s ease-out',
   backgroundColor: 'transparent',
   '&:after': {
     content: '',

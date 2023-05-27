@@ -48,7 +48,6 @@ The available components are as follows:
   - Checkbox
   - IconButton
   - MenuButton
-  - Switch
   - Textbox
 
 ### Icons
