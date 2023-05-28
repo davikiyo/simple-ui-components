@@ -1,4 +1,4 @@
-import { ChangeEventHandler, forwardRef } from 'react'
+import { forwardRef, ComponentPropsWithRef } from 'react'
 import { styled } from 'styles'
 
 const SwitchContainer = styled('label', {
@@ -30,8 +30,9 @@ const Slider = styled('span', {
   '&:before': {
     position: 'absolute',
     content: '',
-    aspectRatio: 1,
     height: '100%',
+    width: 'fit-content',
+    aspectRatio: 1,
     border: '4px solid #ccc',
     boxSizing: 'border-box',
     bottom: '50%',
@@ -42,57 +43,25 @@ const Slider = styled('span', {
   },
 })
 
-export interface SwitchProps {
-  /**
-   * Defines the component's aria-label.
-   */
-  ariaLabel?: string
-
-  /**
-   * Sets the default value.
-   */
-  defaultChecked?: boolean
-
+interface Props extends ComponentPropsWithRef<typeof StyledInput> {
   /**
    * Sets the component's height.
    */
   height?: number
-
-  /**
-   * Sets the component's name.
-   */
-  name?: string
-
-  /**
-   * Handles the click event.
-   */
-  onChange?: ChangeEventHandler<HTMLInputElement>
-
-  /**
-   * Sets the current value.
-   */
-  value?: boolean
 }
+
+export type SwitchProps = Omit<Props, 'type' | 'role' | 'value' | 'defaultValue' | 'width'>
 
 /**
  * displays a styled switch.
  */
 const Switch = forwardRef<HTMLInputElement, SwitchProps>(function (
-  { ariaLabel, defaultChecked, height = 34, name, onChange, value }: SwitchProps,
+  { height = 34, ...props }: SwitchProps,
   ref
 ) {
   return (
     <SwitchContainer css={{ height }}>
-      <StyledInput
-        aria-label={ariaLabel}
-        ref={ref}
-        name={name}
-        type="checkbox"
-        role="switch"
-        onChange={onChange}
-        defaultChecked={defaultChecked}
-        checked={value}
-      />
+      <StyledInput ref={ref} type="checkbox" role="switch" {...props} />
       <Slider css={{ borderRadius: height }} />
     </SwitchContainer>
   )
