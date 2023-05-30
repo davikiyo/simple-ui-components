@@ -11,7 +11,7 @@ const StyledBackdrop = styled('div', {
   height: '100vh',
   transitionProperty: 'opacity, visibility',
   transitionDuration: '.3s',
-  transitionTimingFunction: 'linear',
+  transitionTimingFunction: 'cubic-bezier(.1,1,.8,1)',
   opacity: 0,
   visibility: 'hidden',
 
