@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { JSX, useEffect, useMemo, useState } from 'react'
 
-import { styled, CSS } from 'styles'
+import { CSS, styled } from 'styles'
 import { sortObjects } from 'utils/utility'
 
 import type { DataKeyType, TableData } from './models/table'

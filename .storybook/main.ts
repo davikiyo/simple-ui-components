@@ -8,13 +8,18 @@ const config: StorybookConfig = {
     titlePrefix: 'components',
     files: '**/*.stories.@(jsx|tsx)'
   }],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', '@storybook/addon-a11y', '@storybook/addon-mdx-gfm'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-a11y',
+  ],
   framework: {
     name: "@storybook/react-vite",
     options: {},
   },
-  docs: {
-    autodocs: true
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
   }
 };
 
