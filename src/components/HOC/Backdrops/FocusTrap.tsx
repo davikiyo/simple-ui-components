@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, ReactNode } from 'react'
 
 interface FocusTrapProps {
-  children: JSX.Element
+  children: ReactNode
   active: boolean
 }
 

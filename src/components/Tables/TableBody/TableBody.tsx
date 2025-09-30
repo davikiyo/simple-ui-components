@@ -1,8 +1,9 @@
+import { JSX } from 'react'
 import { styled } from 'styles'
 
+import { TableData } from '../models/table'
 import TableContentHorizontal, { TableContentHorizontalProps } from './TableContentHorizontal'
 import TableContentVertical, { TableContentVerticalProps } from './TableContentVertical'
-import { TableData } from '../models/table'
 
 export const Td = styled('td', {
   borderBottom: '1px solid $darkGray',
