@@ -1,9 +1,9 @@
-import { Fragment } from 'react'
+import { Fragment, JSX } from 'react'
 import { styled } from 'styles'
-import { Td, TableField } from './TableBody'
+import { SelectedRowKey } from '../Table'
 import TableRow from '../TableRow'
 import { extractNestedObject } from '../utils'
-import { SelectedRowKey } from '../Table'
+import { TableField, Td } from './TableBody'
 
 export interface TableContentHorizontalProps<T> {
   data: T[]

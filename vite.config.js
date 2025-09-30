@@ -22,7 +22,14 @@ export default defineConfig(() => {
           format === 'umd' || format === 'commonjs' ? `index.${format}.cjs` : `index.${format}.js`,
       },
       rollupOptions: {
-        external: ['react', 'react-dom', 'classnames', '@stitches/react'],
+        external: [
+          'react',
+          /^react\/.*/,
+          'react-dom',
+          /react-dom\/.*/,
+          'classnames',
+          '@stitches/react',
+        ],
         output: {
           globals: {
             react: 'React',
